@@ -1,6 +1,6 @@
 title: Hexo
 date: 2015-07-08 19:30:26
-tags:
+tags: Hexo
 ---
 
 Quick note on my thought with Hexo.
