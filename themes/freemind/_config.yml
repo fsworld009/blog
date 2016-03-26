@@ -1,5 +1,8 @@
 slogan: "Coding is my life."
 
+theme: cerulean
+inverse: true
+
 menu:
   - title: Archives
     url: archives
@@ -45,7 +48,7 @@ widgets:
 - search
 - category
 - tagcloud
-- recent_posts  
+- recent_posts
 - links
 
 rss: atom.xml

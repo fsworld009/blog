@@ -1,17 +1,21 @@
 Hexo-Theme-Freemind
 ===
 
+![screenshots](http://wzpan.github.io/hexo-theme-freemind/images/screenshots.png)
+
 Freemind aims at fully taking advantages of Bootstrap.
 
 * [Demo](http://wzpan.github.io/hexo-theme-freemind/)
 * [Q&A](http://wzpan.github.io/hexo-theme-freemind/2014/03/16/qna/)
 * [Tag Plugins](http://wzpan.github.io/hexo-theme-freemind/2014/03/16/tag-plugins/)
+* [Color Themes](http://wzpan.github.io/hexo-theme-freemind/2016/01/30/color-themes/)
 * [Readme in Chinese](http://hahack.com/codes/hexo-theme-freemind/)
 
 ## Requirements ##
 
 * Hexo >= 3.0
 * [hexo-tag-bootstrap](https://github.com/wzpan/hexo-tag-bootstrap) >= 0.0.8 (optional)
+
 ## Features ##
 
 * **Bootstrap** - get the power of Twitter Bootstrap with minimal hassle;
@@ -21,6 +25,10 @@ Freemind aims at fully taking advantages of Bootstrap.
   - label - a label with text and specified color;
   - badge - a badge with text;
   - alert - alert messages with text and specified color; 
+* **Local Search Engine** - a build-in local search engine, with the help of [hexo-generator-search](https://github.com/paichyperiondev/hexo-generator-search).
+* **Color Themes** - luxuriant Bootswatch color themes for choice.
+
+![color themes](http://wzpan.github.io/hexo-theme-freemind/images/color-themes.gif)
 
 ## Install ##
 
@@ -30,13 +38,19 @@ Freemind aims at fully taking advantages of Bootstrap.
 $ git clone https://github.com/wzpan/hexo-theme-freemind.git themes/freemind
 ```
 
-2) install [hexo-tag-bootstrap](https://github.com/wzpan/hexo-tag-bootstrap):
+2) install [hexo-tag-bootstrap](https://github.com/wzpan/hexo-tag-bootstrap) (*optional*):
 
 ``` sh
 $ npm install hexo-tag-bootstrap --save
 ```
 
-3) Create pages
+3) install [hexo-generator-search](https://github.com/paichyperiondev/hexo-generator-search) (*optional*):
+
+``` sh
+$ npm install hexo-generator-search --save
+```
+
+4) Create pages
 
 Freemind offers you the customized Categories, Tags and About pages. But you need to manually create these page at your 'source' folder.
 
@@ -58,8 +72,6 @@ $ hexo new page about
 
 Note that only About page can be created in that way.
 
-> Some people may argue that I should embed these pages in the theme. This really makes sense, but currently I don't have time to do so. If you know how, **welcome to send me patches**.
-
 ## Enable ##
 
 Modify `theme` setting in your `_config.yml` to `freemind`.
@@ -75,6 +87,9 @@ $ git pull
 
 ```
 slogan: Yet another bootstrap theme.
+
+theme: bootstrap
+inverse: true
 
 menu:
   - title: Archives
@@ -116,16 +131,25 @@ favicon: favicon.png
 fancybox: true
 duoshuo_shortname:
 
-# Analytics
+# analytics
 google_analytics:
   enable: false
   siteid:
 baidu_tongji:
   enable: false
   siteid:
+
+# Search
+swiftype_key: 
+
+# share button
+bdshare: true
+jiathis: false
 ```
 
 * **slogan** - slogan display at the index page
+* **theme** - which color theme to use
+* **inverse** - whether to use inverse navbar color
 * **menu** - Navigation menu
 * **links** - reference links at the links widget
 * **widgets** - Widgets displaying in sidebar
@@ -133,6 +157,17 @@ baidu_tongji:
 * **fancybox** - Enable [Fancybox](http://fancyapps.com/fancybox/)
 * **duoshuo_shortname** - DuoShuo ID, if you prefer to use duoshuo instead of Disqus
 * **analytics** - Analytics ID. Supports both Google Analytics and Baidu Tongji.
+* **swiftype_key** - Swifttype key to enable local searching. Leave it blank or comment this line if you want to use build-in local search engine.
+* **bdshare** - Baidu share button at the bottom of article.
+* **jiathis** - jiathis share button at the bottom of article.
+
+
+If you prefer to use disqus, the setting of disqus should be placed at your **root** `_config.yml`:
+
+```
+# Disqus
+disqus_shortname:
+```
 
 ## Front-Matter ##
 
@@ -167,3 +202,4 @@ see [Examples](https://github.com/wzpan/freemind/wiki/Examples).
 
 * The theme is built based on [Twitter-Bootstrap 3.1.1](getbootstrap.com/3.1.1/);
 * The beautiful icons are from [Font Awesome](http://fortawesome.github.io/Font-Awesome/icons/).
+* Build-in color themes are from [Bootswatch](bootswatch.com).
