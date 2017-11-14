@@ -13,9 +13,17 @@ language:
 timezone: Asia/Taipei
 disqus_shortname: fsworld009
 
+# Enable facebook comments
+fbcomments:
+  enabled: true
+  lang: en_US
+  appId: 375745726186991
+  numPosts: 10
+  orderBy: reverse_time
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://fsworld009.github.io/blog/
+url: https://fsworld009.github.io/blog/
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
