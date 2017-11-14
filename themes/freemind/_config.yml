@@ -1,4 +1,4 @@
-slogan: "Coding is my life."
+slogan: ""
 
 theme: cerulean
 inverse: true
@@ -28,20 +28,20 @@ menu:
 links:
 
   - title: "Github"
-    url: http://www.github.com/fsworld009
+    url: https://www.github.com/fsworld009
     icon: "fa fa-github"
-  - title: "LinkedIn"
-    url: http://www.linkedin.com/in/lycecs9130
-    icon: "fa fa-linkedin-square"
-  - title: "Google+"
-    url: http://www.linkedin.com/in/lycecs9130
-    icon: "fa fa-google-plus-square"
+  - title: "Twitter"
+    url: https://www.twitter.com/fsworld009
+    icon: "fa fa-twitter"
   - title: "Stackoverflow"
-    url: http://stackoverflow.com/users/3973896/worldfs
+    url: https://stackoverflow.com/users/3973896/worldfs
     icon: "fa fa-stack-overflow"
-  - title: Freemind
+  - title: "Facebook"
+    url: https://www.facebook.com/fsworld009/
+    icon: "fa fa-facebook-square"
+  - title: Freemind (Current blog theme)
     url: https://github.com/wzpan/freemind/
-    intro: "Freemind's Github repository."
+    intro: "Github repository for Freemind"
     icon: "fa fa-github"
 
 widgets:
