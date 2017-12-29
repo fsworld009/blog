@@ -12,6 +12,8 @@ Sync package DB | pacman -Sy
 Search package | pacman -Ss package_name
 Install package | pacman -S package_name
 Remove package and unused dependencies | pacman -Rs package_name
+List installed packages | pacman -Qeq
+Search installed package | pacman -Qs package_name
 
 - Always do `pacman -Syu` before you install packages
 
@@ -51,7 +53,6 @@ error: failed to prepare transaction (could not satisfy dependencies)
 - `sudo pacman -Rns $(pacman -Qtdq)`
   - https://wiki.archlinux.org/index.php/System_maintenance#Clean_the_filesystem
 
-- Use `makepkg -RdLf` for a "re-package". Re-packaging is useful when the process failed in package() and you don't want to run the long build part again.
 
 ### 3rd party AUR package manager
 - [pkgbuilder](https://github.com/Kwpolska/pkgbuilder)
@@ -77,3 +78,4 @@ makepkg -sCLf
 sudo pacman -U *.pkg.tar.xz
 ```
 - Or download PKGBUILD file manually from AUR pages if you don't have AUR package managers.
+- Use `makepkg -RdLf` for a "re-package". Re-packaging is useful when the process failed in package() and you don't want to run the long build part again.
