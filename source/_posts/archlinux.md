@@ -1,9 +1,9 @@
-title: Random notes for installing Archlinux & Xfce4 on Virtualbox
+title: Random notes for installing Archlinux & Xfce4 on VirtualBox
 date: 2017-12-28 10:53:52
 tags: [Archlinux, Linux]
 ---
 
-Below are random notes I jotted down when I installed Archlinux and Xfce4 on virtualbox. It has been a while so there might be errors here and there.
+Below are random notes I jotted down when I installed Archlinux and Xfce4 on VirtualBox. It has been a while so there might be errors here and there.
 
 ## Guest System configuration
 - EFI enabled
@@ -110,6 +110,12 @@ export QT_IM_MODULE="fcitx"
 export XMODIFIERS="@im=fcitx"
 ```
 
+### Thunar No Suitable Archive Manager found error
+- https://bbs.archlinux.org/viewtopic.php?id=31871
+
+### zip archives
+- use `peazip-gtk2`
+
 
 ## VirtualBox related topics
 ### Install VirtualBox Guest addon
@@ -201,7 +207,7 @@ firefox &
 
 
 ## Pacman and AUR packages
-Refer to my other article.
+Refer to my [other article](../../29/pacman/).
 
 ## Enable Hibernate
 **DO NOT USE** systemd hibernate when running as a VM guest, use VirtualBox host's save state feature instead. Otherwise guest addon will break on resume and it can only be fixed by full reboot.

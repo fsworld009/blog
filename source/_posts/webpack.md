@@ -2,6 +2,8 @@ title: webpack
 date: 2016-03-27 14:50:37
 tags: [javascript, Front-End, webpack, npm]
 ---
+**OUTDATED**
+<!--more-->
 ## Caution: this article is outdated and has too much misinformation.
 
 [webpack](https://webpack.github.io/) is a module bundler for Froned-end web development. It aims to provide a way to automate resources including, minifying, and uglifying so that you don't need to manually insert them in your HTML.
