@@ -20,13 +20,37 @@ Search installed package | pacman -Qs package_name
 ## Tips and notes
 - https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks
 
-### Unlnown public key error
+## yy v.s. y
+Passing two --refresh or -y flags will force a refresh of all package lists even if they appear to be up to date.
+
+### Unknown public key
 ```bash
 pacman -S libmng
 libmng-2.0.3.tar.xz ... FAILED (unknown public key F54984BFA16C640F)
 ```
 - `gpg --recv-keys F54984BFA16C640F`.
 - https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
+
+### Signature from <publisher> is unknown trust
+```bash
+sudo pacman-key --refresh-keys
+```
+other possible fixes:
+1. https://stackoverflow.com/a/35256655/3973896
+```bash
+pacman -S archlinux-keyring
+pacman-key --populate
+pacman -Su
+```
+2. https://forum.antergos.com/post/46752
+```bash
+wget https://git.archlinux.org/archlinux-keyring.git/snapshot/archlinux-keyring-20171213.tar.xz
+pacman -U antergos-keyring-20170524-1-any.pkg.tar.xz
+sudo pacman -Scc
+sudo pacman-key --refresh-keys
+sudo pacman -Syu
+```
+- get the latest keyring at https://git.archlinux.org/archlinux-keyring.git/
 
 ### lib32 packages
 - Required by some 32bit applications, or when you want to build 32bit applications from gcc.
@@ -50,9 +74,7 @@ error: failed to prepare transaction (could not satisfy dependencies)
 - https://forum.manjaro.org/t/cannot-apply-the-latest-update-due-to-dependency-conflict/25283/9
 
 ### Cleanup
-- `sudo pacman -Rns $(pacman -Qtdq)`
-  - https://wiki.archlinux.org/index.php/System_maintenance#Clean_the_filesystem
-
+- Remove unused dependencies: `sudo pacman -Rns $(pacman -Qtdq)`
 
 ### 3rd party AUR package manager
 - [pkgbuilder](https://github.com/Kwpolska/pkgbuilder)

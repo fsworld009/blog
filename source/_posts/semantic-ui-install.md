@@ -2,7 +2,8 @@ title: Install Semantic UI into your project
 date: 2016-03-27 16:47:58
 tags: [semantic-ui, javascript, css, Front-End, npm]
 ---
-
+**OUTDATED**
+<!--more-->
 [Official guide](http://semantic-ui.com/introduction/getting-started.html) is pretty clear. I just make some notes here mainly for references later.
 
 1. install gulp
