@@ -184,53 +184,53 @@ Without `components` property, the build script will include all components.
 ## Documentation and usage notes
 - Check [Official website](https://semantic-ui.com/) for documentations.
 
-1. Class names may require to be placed in order
-```html
-<div class="ui grid">
-  <div class="four wide column"></div>
-  <div class="twelve wide column"></div>
-</div>
-```
-Put class name as `wide four column` won't work in this case.
+- Class names may require to be placed in order
+    ```html
+    <div class="ui grid">
+    <div class="four wide column"></div>
+    <div class="twelve wide column"></div>
+    </div>
+    ```
+  Put class name as `wide four column` won't work in this case.
 
-2. For each component that involves javascript, the component implementations are declared as jquery instance methods, the method name is usually the component name, like `$(selector).dropdown()` is for dropdown and `$(selector),modal()` is for modal.
-- To initialize the component:
+- For each component that involves javascript, the component implementations are declared as jquery instance methods, the method name is usually the component name, like `$(selector).dropdown()` is for dropdown and `$(selector),modal()` is for modal.
+    - To initialize the component:
 ```js
 $('.ui.dropdown').dropdown(settings)
 ```
-`settings` is an object that contains initialize options like most jQuery do. Available options are listed under `Settings` tab.
+    `settings` is an object that contains initialize options like most jQuery do. Available options are listed under `Settings` tab.
 
-- To invoke component behavior (methods):
+    - To invoke component behavior (methods):
 ```js
 $('.ui.dropdown').dropdown('set value', value);
 ```
-- Note that behavior name may have spaces and you should not remove them or convert them to camel case.
+    - Note that behavior name may have spaces and you should not remove them or convert them to camel case.
 
-3. Most javascript components offer the `destroy` behavior, we can use it to integrate with React and Vue.js life cycle. Take Vue.js for example, we need to implement `mounted`, `updated`, and `beforeDestroy` life cycle to create and destroy component:
+- Most javascript components offer the `destroy` behavior, we can use it to integrate with React and Vue.js life cycle. Take Vue.js for example, we need to implement `mounted`, `updated`, and `beforeDestroy` life cycle to create and destroy component:
 
-```js
-  mounted() {
-    this.create();
-  },
-  updated(){
-    this.destroy();
-    this.create();
-  },
-  beforeDestroy(){
-    this.destroy();
-  }, 
-  methods: {
-    create(){
-      var $dropdown = $(this.$el).find(".ui.dropdown");
-      $dropdown.dropdown({...});
+    ```js
+    mounted() {
+        this.create();
     },
-    destroy(){
-      var $dropdown = $(this.$el).find(".ui.dropdown");
-      $dropdown.dropdown('destroy');
+    updated(){
+        this.destroy();
+        this.create();
+    },
+    beforeDestroy(){
+        this.destroy();
+    }, 
+    methods: {
+        create(){
+        var $dropdown = $(this.$el).find(".ui.dropdown");
+        $dropdown.dropdown({...});
+        },
+        destroy(){
+        var $dropdown = $(this.$el).find(".ui.dropdown");
+        $dropdown.dropdown('destroy');
+        }
     }
-  }
-```
-I would suggest to create a `Dropdown` component to abstract the create/destroy logics for better reusability. Same goes for all Semantic UI components.
+    ```
+    - I would suggest to create a `Dropdown` component to abstract the create/destroy logics for better reusability. Same goes for all Semantic UI components.
 
 ## Links
 - [Glossary](http://learnsemantic.com/developing/glossary.html)
