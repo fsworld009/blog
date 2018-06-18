@@ -3,7 +3,8 @@ date: 2017-12-29 17:21:33
 tags: [Archlinux, linux]
 ---
 Pacman notes
-<!--more-->
+
+## Cheatsheet
 
 Usage | Command
 ------|--------
@@ -16,7 +17,7 @@ List installed packages | pacman -Qeq
 Search installed package | pacman -Qs package_name
 
 - Always do `pacman -Syu` before you install packages
-
+<!--more-->
 ## Tips and notes
 - https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks
 
@@ -51,6 +52,29 @@ sudo pacman-key --refresh-keys
 sudo pacman -Syu
 ```
 - get the latest keyring at https://git.archlinux.org/archlinux-keyring.git/
+
+### The requested URL returned error: 404
+```
+error: failed retrieving file 'python2-requests-2.18.4-4-any.pkg.tar.xz' from mirrors.evowise.com : The requested URL returned error: 404
+error: failed retrieving file 'python2-requests-2.18.4-4-any.pkg.tar.xz' from mirrors.kernel.org : The requested URL returned error: 404
+error: failed retrieving file 'python2-requests-2.18.4-4-any.pkg.tar.xz' from mirrors.kernel.org : The requested URL returned error: 404
+warning: failed to retrieve some files
+error: failed to commit transaction (unexpected error)
+Errors occurred, no packages were upgraded.
+```
+This is usually happened because the local database is outdated, so pacman is not aware of new version and trying to pull a old version package (which is not available anymore). The `python2-requests` package, at the time of writing, is actually on `2.19.1-1`.
+
+Do `pacman -Syu` or `pacman -Syyu` should fix the error.
+
+If the problem exists, it could also be that the server mirror you're using is outdated, try edit `/etc/pacman.d/mirrorlist` and disable (comment out) top servers:
+
+- /etc/pacman.d/mirrorlist
+```
+## Worldwide
+Server = http://mirrors.evowise.com/archlinux/$repo/os/$arch
+#Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch
+```
+add `#` to comment out the first server and try again, for me it was the worldwide server that is outdated.
 
 ### lib32 packages
 - Required by some 32bit applications, or when you want to build 32bit applications from gcc.
@@ -87,17 +111,19 @@ Server = https://pkgbuilder-repo.chriswarrick.com/
 ```bash
 pacman-key -r 5EAAEA16
 pacman-key --lsign 5EAAEA16
-pacman -Syyu
+pacman -Syyu pkgbuilder
 ```
 
 3. basically the usage is the same as `pacman`, for example `pkgbuilder -S package_name` and `pkgbuilder -Syu`
 
 ### Build AUR packages manually
+You need to install `base-devel` package for building packages
+
 ```bash
 pkgbuilder -F {package_name}
 nvim PKGBUILD
 makepkg -sCLf
 sudo pacman -U *.pkg.tar.xz
 ```
-- Or download PKGBUILD file manually from AUR pages if you don't have AUR package managers.
+- For step 1, you can also download PKGBUILD file manually from AUR pages if you don't want to use AUR package manager.
 - Use `makepkg -RdLf` for a "re-package". Re-packaging is useful when the process failed in package() and you don't want to run the long build part again.

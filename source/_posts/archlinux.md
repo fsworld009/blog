@@ -1,4 +1,4 @@
-title: Random notes for installing Archlinux & Xfce4 on VirtualBox
+title: Install Archlinux & Xfce4 on VirtualBox
 date: 2017-12-28 10:53:52
 tags: [Archlinux, Linux]
 ---
@@ -57,7 +57,7 @@ uid=1000(fsworld009) gid=1000(fsworld009) groups=1000(fsworld009),10(wheel),92(a
 ```
 
 ## Xfce4
-1. Install: `sudo pacman -S xorg xfce xfce-goodies`
+1. Install: `sudo pacman -S xorg xfce4 xfce4-goodies`
 2. start xfce4: `startxfce4`
 - I didn't make xfce4 run on boot, just feel like it is better to login to shell only by default
 
@@ -101,9 +101,10 @@ None,      Down, Button5, 6
 
 ### IME
 - `gcin` does not work properly in many applications (like Google Chrome), so I installed `fcitx` instead
-1. `fcitx-chewing` for Traditional Chinese, `fxitc-mozc` for Japanese
+- `pacman -Syu fcitx-im` for installing fcitx & GUI framework supports **(required)**
+1. `fcitx-chewing` for Traditional Chinese, `fcitx-mozc` for Japanese
 2. you need `fcitx-configtool` package in order to config IMEs
-3. add the following to `~/.config/xfce4/xinitrc`:
+4. add the following to `~/.config/xfce4/xinitrc`:
 ```
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
