@@ -28,6 +28,9 @@ hexo generate
 hexo deploy
 ```
 
-### Notes for deployments
+## Notes
+- Built-in tags https://hexo.io/docs/tag-plugins.html
+
+### Deployment
 - You can force hexo to regenerate all pages by deleting `public` folder and then do `hexo generate`, useful for issues like title is not updated in article list pages.
 - For using git as deployment method, deleting `.deploy_git` folder and then do deployment will result a force update on target server/branch, might be useful if you don't want to preserve older versions of articles and pages.
