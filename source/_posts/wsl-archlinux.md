@@ -31,7 +31,7 @@ I prefer WSL mainly because of better GUI experience, as I use VS Code for devel
 %wheel ALL=(ALL) NOPASSWD: ALL
 ```
 3. https://wiki.archlinux.org/index.php/users_and_groups
-    1. `useradd -m -G wheel -s /bin/bash user1`
+    1. `useradd -m -G wheel -s /bin/bash user1V`
     2. `passwd user1`
 
 4. Change default login user to the user you created:
@@ -44,6 +44,8 @@ I prefer WSL mainly because of better GUI experience, as I use VS Code for devel
     - [https://sourceforge.net/projects/vcxsrv/](VcXsrv)
     - [https://sourceforge.net/projects/xming/](Xming)
     - [https://mobaxterm.mobatek.net/](MobaXterm)
+    - [https://token2shell.com/x410/](X410)
+      - This one is not free, but is the best of what I have tried so far
 2. Generally there are 2 modes for X-Server"
     - Multi-windowed mode: use this if you only want to run individual GUI apps and have better "transparent" experience across Windows and Linux apps.
     - One-windowd (One large window) mode: use this if you want to run a Linux desktop environment (GNome, XFCE4, KDE...), and then run GUIs from environment.
@@ -86,6 +88,33 @@ This is my current setup:
 - Update the `BasePath` key after moving to preserve the WSL instance (not tested yet).
 - When moving this Arch instance to another Windows 10 installation, copy all data and registry to the new installation (not tested yet)
 
+
+## Sound support
+Use pulseaudio for sound
+
+On Windows side:
+- download pulseaudio from https://github.com/kitor/wsl/
+- run `pulseaudio.exe` to start server (could launch it inside WSL)
+- it seems that this version will not shut down properly, would have to do `killall pulseaudio.exe` in bash or kill it via Task Manager
+On Linux side:
+- `pacman -Syu pulseaudio`
+- Also need `xfce4-pulseaudio-plugin` for Xfce4
+- `sudo vim /etc/pulse/client.conf` and add this line:
+```
+default-server = tcp:localhost
+```
+- Restart xfce4
+
+
+Could also check [the guide](https://token2shell.com/howto/x410/enabling-sound-in-wsl-ubuntu-let-it-sing/) from X410 official site
+
+
+## Script
+Since it requires some setup to properly launch desktop environment, it is
+easier to put everything in a launch script. Here is
+[my example](https://github.com/fsworld009/dotfiles/blob/master/wsl/startxfce4.sh).
+
+
 ## Troubleshooting notes
 
 ### fakeroot-tcp
@@ -100,7 +129,7 @@ The solution is to build a `fakeroot-tcp` package from a working Arch linux syst
 ```
 error while loading shared libraries: libQt5Core.so.5: cannot open shared object file: No such file or directory
 ```
-- Workaround: `sudo　strip --remove-section=.note.ABI-tag /usr/lib/libQt5Core.so.5.10.1`
+- Workaround: `sudo strip --remove-section=.note.ABI-tag /usr/lib/libQt5Core.so.5.10.1`
   - https://github.com/Microsoft/WSL/issues/3023
 
 ### Disable PATH from Windows

@@ -51,7 +51,29 @@ sudo pacman -Scc
 sudo pacman-key --refresh-keys
 sudo pacman -Syu
 ```
-- get the latest keyring at https://git.archlinux.org/archlinux-keyring.git/
+  - get the latest keyring at https://git.archlinux.org/archlinux-keyring.git/
+3. Disable packages that are blocking update
+  - For example, I was getting this error for pkgbuilder author's key
+  - Re-assign key also failed
+```bash
+$  sudo pacman-key -r 5EAAEA16
+gpg: keyserver receive failed: No data
+==> ERROR: Remote key not fetched correctly from keyserver.
+```
+  - The kiyring is outdated but pacman upgrades are blocked by this key
+  - The only workaround at this point is to disable upgrading pkgbuilder
+  - `sudo /etc/pacman.conf` , edit `IgnorePkg` to include pkgbuilder:
+```
+IgnorePkg   = fakeroot,pkgbuilder
+```
+  - and comment out pkgbuilder repository:
+```
+# [pkgbuilder]
+# Server = https://pkgbuilder-repo.chriswarrick.com/
+```
+  - after the upgrade, revert pkgbuilder
+  - then `sudo pacman-key --refresh-keys` should fix the issue
+    - or follow their [README](https://github.com/Kwpolska/pkgbuilder) to resign the key
 
 ### The requested URL returned error: 404
 ```
