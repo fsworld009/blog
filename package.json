@@ -23,6 +23,6 @@
   "scripts": {
     "hexo": "./node_modules/hexo/bin/hexo",
     "server": "hexo server",
-    "deploy": "rm -r public; hexo generate; rm -r .deploy_git; hexo deploy"
+    "deploy": "rm -rf public; hexo generate; rm -r .deploy_git; hexo deploy"
   }
 }
