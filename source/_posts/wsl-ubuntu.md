@@ -9,6 +9,9 @@ a WSL Management tool [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline
 
 <!--more-->
 
+(Updated 2020/06/26: Found a note I wrote back in Sep 2019 when I was trying
+to install WSL in a new laptop, so added a troubleshoot section below. Also
+added a section for upgrading to WSL2)
 
 ## Download and install
 1. follow the quick start [here](https://github.com/DDoSolitary/LxRunOffline/wiki)
@@ -26,6 +29,18 @@ LxRunOffline i -n Ubuntu -d F:\WSL\Ubuntu -f <path_to_ubuntu_image> -s
   Or you can create a shortcut as well
   ```
   LxRunOffline s -n Ubuntu -f F:\Ubuntu.lnk
+  ```
+
+  Or use `wsl` command
+
+  ```
+  wsl -d Ubuntu
+  ```
+
+  You can also set default wsl version so that you only need to type `wsl`
+  ```bash
+  wsl --set-default Ubuntu
+  wsl
   ```
 
   You should be login as root
@@ -98,11 +113,15 @@ sudo chown -R user1 linuxbrew/
   ```bash
   sudo apt-get update
   sudo apt-get install build-essential
+
+  # This one is optional, can also edit $PATH from wsl, see step 4
   echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+
   brew install gcc
   ```
 
-4. Prepend `/home/linuxbrew/.linuxbrew/bin` into `$PATH`:
+4. (Only required if you skipped echo 'eval... command above)
+   Prepend `/home/linuxbrew/.linuxbrew/bin` into `$PATH`:
   - LxRunOffline has option to set default environment variables but I'm not
     sure how to edit multiple lines.
   - So I open `regedit` and go to
@@ -151,3 +170,58 @@ Now with Conpty:
 ![Terminal with Conpty](../../../../images/vscode_wsl_terminal_conpty.png)
 
 Not too bad right? The font rendering is much better with Conpty as well.
+
+
+## Troubleshoot
+
+### visudo command not found
+https://askubuntu.com/questions/1103038/cant-run-visudo-within-docker-sudoers-file-does-not-exist
+
+### visudo: no editor found (editor path = /usr/bin/editor)  
+
+```bash
+apt install vim
+```
+
+###  useradd: group 'wheel' does not exist
+
+```bash
+addgroup wheel
+```
+
+
+### /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/brew.sh: line 4: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory       
+
+https://askubuntu.com/questions/114759/warning-setlocale-lc-all-cannot-change-locale
+
+```bash
+sudo apt install -y locales
+sudo vim /etc/locale.gen
+# uncomment en_us.UTF-8 UTF-8 in locale.gen, then save
+sudo locale-gen
+```
+
+## Upgrade to WSL 2
+
+(2020/06/26) Note that if your project is put on Windows file system and
+shared to WSL distro, currently changing files from Windows won't trigger
+file change notifications on Linux side
+(see https://github.com/microsoft/WSL/issues/4739)
+
+1. Download amnd install WSL 2 Kernel from
+   https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
+2. Enable the 'Virtual Machine Platform' optional component
+   - https://docs.microsoft.com/en-us/windows/wsl/install-win10
+   - Open Powershell as Administrator and run:
+      ```powershell
+      dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+      ```
+3.
+  ```bash
+  wsl --set-version Ubuntu 2
+  ```
+
+Prefer setting default wsl version to 2 after this
+```bash
+wsl --set-default-version 2
+```
