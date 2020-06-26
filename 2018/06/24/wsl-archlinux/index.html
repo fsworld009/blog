@@ -1,0 +1,420 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Setup Arch Linux in WSL | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Recently I have tried to install Arch Linux under WSL (Windows Subsystem for Linux). So far I have positive experience and I actually prefer WSL over VirtualBox as my working environment under Windows 10.
+Of course WSL is not perfect, compare to installing Arch under VirtualBox:
+
+Pros
+Faster startup time (just as fast as open a cmd window)
+Share files bet
+Running GUI apps via XServer is much more responsive, I think this is mostly because we don’t need to run GUI via SSH with this setup.
+
+
+Cons
+No “save machine state” functionality from VirtualBox
+No audio support
+There will always be a chance of running into compatibility issues, especially GUI apps.
+You cannot edit any file under WSL data folder from Windows side, the file may become corrupted in WSL.
+WSL won’t see any new file created (except share folders under /mnt/), so if you want to copy some files into WSL, you have to copy it in WSL shell via /mnt/ folder
+
+
+
+I prefer WSL mainly because of better GUI experience, as I use VS Code for development most of the time.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Setup Arch Linux in WSL"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Setup Arch Linux in WSL</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Recently I have tried to install Arch Linux under WSL (Windows Subsystem for Linux). So far I have positive experience and I actually prefer WSL over VirtualBox as my working environment under Windows 10.</p>
+<p>Of course WSL is not perfect, compare to installing Arch under VirtualBox:</p>
+<ul>
+<li>Pros<ul>
+<li>Faster startup time (just as fast as open a cmd window)</li>
+<li>Share files bet</li>
+<li>Running GUI apps via XServer is much more responsive, I think this is mostly because we don’t need to run GUI via SSH with this setup.</li>
+</ul>
+</li>
+<li>Cons<ul>
+<li>No “save machine state” functionality from VirtualBox</li>
+<li>No audio support</li>
+<li>There will always be a chance of running into compatibility issues, especially GUI apps.</li>
+<li>You cannot edit any file under WSL data folder from Windows side, the file may become corrupted in WSL.</li>
+<li>WSL won’t see any new file created (except share folders under <code>/mnt/</code>), so if you want to copy some files into WSL, you have to copy it in WSL shell via <code>/mnt/</code> folder</li>
+</ul>
+</li>
+</ul>
+<p>I prefer WSL mainly because of better GUI experience, as I use VS Code for development most of the time.<br>  <a id="more"></a></p>
+<h2 id="Download-and-install"><a href="#Download-and-install" class="headerlink" title="Download and install"></a>Download and install</h2><ul>
+<li>Go to <a href="https://github.com/yuk7/ArchWSL" target="_blank" rel="noopener">https://github.com/yuk7/ArchWSL</a> and download the installer, follow the installation steps in README</li>
+<li>Once you open the Arch.exe, the location for this WSL instance will be recorded in registry, so it’s better to decide where you’d like to put it before starting the installation.</li>
+</ul>
+<h2 id="Create-user"><a href="#Create-user" class="headerlink" title="Create user"></a>Create user</h2><ol>
+<li>Open <code>Arch.exe</code>, you should be prompted as <code>root</code> user</li>
+<li><p>run <code>visudo</code> and remove comment (<code>#</code>) for the line 85:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%wheel <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>) NOPASSWD: <span class="keyword">ALL</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://wiki.archlinux.org/index.php/users_and_groups" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/users_and_groups</a></p>
+<ol>
+<li><code>useradd -m -G wheel -s /bin/bash user1V</code></li>
+<li><code>passwd user1</code></li>
+</ol>
+</li>
+<li><p>Change default login user to the user you created:</p>
+<ol>
+<li>exit Arch.exe and goback to cmd</li>
+<li><code>Arch.exe config --default-user user1</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="Run-GUI-apps"><a href="#Run-GUI-apps" class="headerlink" title="Run GUI apps"></a>Run GUI apps</h2><ol>
+<li>Use one of the following to run XServer on Windows:<ul>
+<li><a href="VcXsrv">https://sourceforge.net/projects/vcxsrv/</a></li>
+<li><a href="Xming">https://sourceforge.net/projects/xming/</a></li>
+<li><a href="MobaXterm">https://mobaxterm.mobatek.net/</a></li>
+<li><a href="X410">https://token2shell.com/x410/</a><ul>
+<li>This one is not free, but is the best of what I have tried so far</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Generally there are 2 modes for X-Server”<ul>
+<li>Multi-windowed mode: use this if you only want to run individual GUI apps and have better “transparent” experience across Windows and Linux apps.</li>
+<li>One-windowd (One large window) mode: use this if you want to run a Linux desktop environment (GNome, XFCE4, KDE…), and then run GUIs from environment.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>I personally prefer multi-windoed mode, but I also installed XFCE4 in my Arch instance, in case of unsupported app or I need to test out GUI apps without XServer (For example, fcitx cannot be properly configured without entering XFCE4).</li>
+</ul>
+<ol>
+<li>In WSL shell run <code>export DISPLAY=:0</code></li>
+<li>Run GUI apps with <code>&amp;</code>, for example <code>konsole &amp;</code><ul>
+<li>Note that closing the shell will also close all GUI executed from this shell.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Configure-XWindow"><a href="#Configure-XWindow" class="headerlink" title="Configure XWindow"></a>Configure XWindow</h3><ul>
+<li>Install <code>lxappearance</code> to configure appearance, cursor theme…etc.</li>
+</ul>
+<h3 id="Example-setup"><a href="#Example-setup" class="headerlink" title="Example setup"></a>Example setup</h3><p>This is my current setup:</p>
+<ul>
+<li>Open MobaXterm and start XServer (because this is the only one that supports VS Code)</li>
+<li>Use ConEmu to run Arch.exe</li>
+<li><code>export DISPLAY=:0</code></li>
+<li>Run Konsole: <code>konsole &amp;</code></li>
+<li>Run GUI from this ConEmu Tab, run other commands from Konsole</li>
+</ul>
+<h3 id="Other-references-tutorials"><a href="#Other-references-tutorials" class="headerlink" title="Other references / tutorials:"></a>Other references / tutorials:</h3><ul>
+<li><a href="https://blog.ropnop.com/configuring-a-pretty-and-usable-terminal-emulator-for-wsl/" target="_blank" rel="noopener">https://blog.ropnop.com/configuring-a-pretty-and-usable-terminal-emulator-for-wsl/</a></li>
+<li><a href="https://nickjanetakis.com/blog/using-wsl-and-mobaxterm-to-create-a-linux-dev-environment-on-windows" target="_blank" rel="noopener">https://nickjanetakis.com/blog/using-wsl-and-mobaxterm-to-create-a-linux-dev-environment-on-windows</a></li>
+<li><a href="/blog/2017/12/28/archlinux/" title="My previous post">My previous post</a> about other topics related to GUI (such as IME).</li>
+</ul>
+<h2 id="Share-files-with-Windows"><a href="#Share-files-with-Windows" class="headerlink" title="Share files with Windows"></a>Share files with Windows</h2><ul>
+<li>By default all windows drives are mount on <code>mnt</code>, this is considered as  share folders between Windows and WSL.</li>
+<li>You can turn this off by <code>Arch.exe config --mount-drive off</code></li>
+<li><strong>DO NOT</strong>  edit any file in WSL folder (even your home folder) with Windows tools, the files might become corrupted.</li>
+<li>Also do not copy data into WSL data folder from Windows, WSL won’t detect it. Instead use share folder and copy files from WSL side.</li>
+<li>It is safe to edit files under <code>/mnt/</code> share folders from both side.</li>
+</ul>
+<h2 id="Backup-move-instance"><a href="#Backup-move-instance" class="headerlink" title="Backup / move instance"></a>Backup / move instance</h2><ul>
+<li>Registry location: <code>[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\{(WSLID)}</code></li>
+<li>Update the <code>BasePath</code> key after moving to preserve the WSL instance (not tested yet).</li>
+<li>When moving this Arch instance to another Windows 10 installation, copy all data and registry to the new installation (not tested yet)</li>
+</ul>
+<h2 id="Sound-support"><a href="#Sound-support" class="headerlink" title="Sound support"></a>Sound support</h2><p>Use pulseaudio for sound</p>
+<p>On Windows side:</p>
+<ul>
+<li>download pulseaudio from <a href="https://github.com/kitor/wsl/" target="_blank" rel="noopener">https://github.com/kitor/wsl/</a></li>
+<li>run <code>pulseaudio.exe</code> to start server (could launch it inside WSL)</li>
+<li>it seems that this version will not shut down properly, would have to do <code>killall pulseaudio.exe</code> in bash or kill it via Task Manager<br>On Linux side:</li>
+<li><code>pacman -Syu pulseaudio</code></li>
+<li>Also need <code>xfce4-pulseaudio-plugin</code> for Xfce4</li>
+<li><p><code>sudo vim /etc/pulse/client.conf</code> and add this line:</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">default</span>-<span class="keyword">server</span> = tcp:localhost</div></pre></td></tr></table></figure>
+</li>
+<li><p>Restart xfce4</p>
+</li>
+</ul>
+<p>Could also check <a href="https://token2shell.com/howto/x410/enabling-sound-in-wsl-ubuntu-let-it-sing/" target="_blank" rel="noopener">the guide</a> from X410 official site</p>
+<h2 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h2><p>Since it requires some setup to properly launch desktop environment, it is<br>easier to put everything in a launch script. Here is<br><a href="https://github.com/fsworld009/dotfiles/blob/master/wsl/startxfce4.sh" target="_blank" rel="noopener">my example</a>.</p>
+<h2 id="Troubleshooting-notes"><a href="#Troubleshooting-notes" class="headerlink" title="Troubleshooting notes"></a>Troubleshooting notes</h2><h3 id="fakeroot-tcp"><a href="#fakeroot-tcp" class="headerlink" title="fakeroot-tcp"></a>fakeroot-tcp</h3><p><code>fakeroot</code> is not supported in WSL, so this Arch instance replaced it with <code>fakeroot-tcp</code>.</p>
+<p>Sometimes when installing packages, you’ll get prompted if you’d like to replace <code>fakeroot-tcp</code> with <code>fakeroot</code>, be sure to choose NO. If you happened to replace it, you’ll be stuck with a broken system. As <code>fakeroot</code> is not working but a working <code>fakeroot</code> is required in order to reinstall <code>fakeroot-tcp</code> from AUR again. </p>
+<p>The solution is to build a <code>fakeroot-tcp</code> package from a working Arch linux system and copy the .tar file, or download it from <a href="https://davidtw.co/writings/2017/archlinux-on-the-windows-subsystem-for-linux" target="_blank" rel="noopener">https://davidtw.co/writings/2017/archlinux-on-the-windows-subsystem-for-linux</a>, and install it using <code>pacman -U</code>. (This article also explains this issue better)</p>
+<h3 id="Cannot-run-QT5-apps"><a href="#Cannot-run-QT5-apps" class="headerlink" title="Cannot run QT5 apps"></a>Cannot run QT5 apps</h3><ul>
+<li><p>When running QT5, I got this error:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">error </span>while loading shared libraries: libQt5Core.so.5: cannot open shared object file: No such file or directory</div></pre></td></tr></table></figure>
+</li>
+<li><p>Workaround: <code>sudo strip --remove-section=.note.ABI-tag /usr/lib/libQt5Core.so.5.10.1</code></p>
+<ul>
+<li><a href="https://github.com/Microsoft/WSL/issues/3023" target="_blank" rel="noopener">https://github.com/Microsoft/WSL/issues/3023</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Disable-PATH-from-Windows"><a href="#Disable-PATH-from-Windows" class="headerlink" title="Disable PATH from Windows"></a>Disable PATH from Windows</h3><ul>
+<li>By default <code>$PATH</code> included all PATHs from Windows, this can be changed by <code>Arch.exe config --append-path off</code></li>
+<li>For me I got <code>HRESULT:0x80004005</code> error when trying to do so, I solved by going to registry (refer above for registry location) and changed the <code>Flags</code> key to 5.<ul>
+<li>You can see how to configure this field <a href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags" target="_blank" rel="noopener">here</a>.</li>
+<li>If nothing changed after you edited the flag, try reboot Windows.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Reboot-WSL-instance"><a href="#Reboot-WSL-instance" class="headerlink" title="Reboot WSL instance"></a>Reboot WSL instance</h3><ul>
+<li><code>sudo killall -r &#39;.*&#39;</code></li>
+<li><a href="https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows" target="_blank" rel="noopener">https://superuser.com/questions/1126721/rebooting-ubuntu-on-windows-without-rebooting-windows</a></li>
+</ul>
+<h3 id="Cursor-icon-is-too-big-and-not-rendered-properly-when-running-GUI-via-XServer"><a href="#Cursor-icon-is-too-big-and-not-rendered-properly-when-running-GUI-via-XServer" class="headerlink" title="Cursor icon is too big and not rendered properly when running GUI via XServer"></a>Cursor icon is too big and not rendered properly when running GUI via XServer</h3><ul>
+<li>Solution: switch to a cursor theme that is smaller, such as <code>xcursor-simpleandsoft</code></li>
+<li><a href="https://wiki.archlinux.org/index.php/Cursor_themes" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Cursor_themes</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2019/01/20/pacman-issue/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2018/06/18/package-managers-windows-mac/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2018/06/24/wsl-archlinux/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2018-06-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Archlinux/">Archlinux<span>4</span></a></li> <li><a href="/blog/tags/Windows/">Windows<span>3</span></a></li> <li><a href="/blog/tags/WSL/">WSL<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

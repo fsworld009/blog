@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Apache httpd SSL Configuration | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="My company’s client is going to do penetration test on our product, I was assigned to configure Apache server, mainly enhance SSL Cipher settings.Belo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Apache httpd SSL Configuration"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Apache httpd SSL Configuration</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>My company’s client is going to do penetration test on our product, I was assigned to configure Apache server, mainly enhance SSL Cipher settings.<br>Below are some notes on SSL configurations for Apache httpd.</p>
+<h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><p>Learn SSL Basics at <a href="http://www.wisegeek.com/what-is-an-ssl-cipher.htm" target="_blank" rel="noopener">http://www.wisegeek.com/what-is-an-ssl-cipher.htm</a></p>
+<p>Basically we need to configure which SSL Protocols and Ciphers are allowed.</p>
+<p>For SSLProtocol, SSLv2 and SSLv3 have been proven vulnerable, so go with TLSv1, TLSv1.1, TLSv1.2 whenever possible.</p>
+<p>The main challenge is to setup SSL Ciphers, as there is a large amount of them and some of them have been proven vulnerable, so you need to disable them, but not all ciphers.<br>There is no best settings as it depends on what environment/browser you want to support, some older environment may only have vulnerable ciphers available.</p>
+<h1 id="Test-Tools-Websites"><a href="#Test-Tools-Websites" class="headerlink" title="Test Tools, Websites"></a>Test Tools, Websites</h1><h2 id="COMODO-SSL-Analyzer"><a href="#COMODO-SSL-Analyzer" class="headerlink" title="COMODO SSL Analyzer"></a><a href="https://sslanalyzer.comodoca.com/" target="_blank" rel="noopener">COMODO SSL Analyzer</a></h2><p>This tool will list available SSL protocols and ciphers, it also gives hint on any vulnerable protocol or weak cipher. Disable all the ciphers or protocols that marked<br>as weak/vulnerable.</p>
+<h2 id="QUALYS-SSL-LABS-SSL-Server-Test"><a href="#QUALYS-SSL-LABS-SSL-Server-Test" class="headerlink" title="QUALYS SSL LABS - SSL Server Test"></a><a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="noopener">QUALYS SSL LABS - SSL Server Test</a></h2><p>This one gives more detailed result compare to the COMODO SSL Analyzer. It also gives a scaled score (scale from A to F I guess).<br>If your score is below A, it gives suggestions on how to improve.<br>This tool also do connection tests on major browsers so that you can check if all supported platform can establish connection to your website.<br>If you can get A without losing any targeted browser support, then you should be good.</p>
+<h2 id="QUALYS-FREESCAN"><a href="#QUALYS-FREESCAN" class="headerlink" title="QUALYS FREESCAN"></a><a href="https://freescan.qualys.com/freescan-front/" target="_blank" rel="noopener">QUALYS FREESCAN</a></h2><p>(Register required)<br>This one will generate a much more detailed test report.<br>BUT be aware that you have limit number of scans for each account.<br>I registered an account and found out that it only support 10 reports by default, I do get an email instructing how to get more scan.</p>
+<h2 id="OpenSSL-s-client"><a href="#OpenSSL-s-client" class="headerlink" title="OpenSSL s_client"></a>OpenSSL s_client</h2><blockquote>
+<p>openssl s_client -cipher [cipher-names] -connect [host:port] (protocol flags)</p>
+</blockquote>
+<p>Available Protocol flags:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-ssl2         - just use SSLv2</div><div class="line">-ssl3         - just use SSLv3</div><div class="line">-tls1_2       - just use TLSv1.2</div><div class="line">-tls1_1       - just use TLSv1.1</div><div class="line">-tls1         - just use TLSv1</div><div class="line">-dtls1        - just use DTLSv1</div></pre></td></tr></table></figure></p>
+<p>For cipher names, go to <a href="https://www.openssl.org/docs/apps/ciphers.html" target="_blank" rel="noopener">https://www.openssl.org/docs/apps/ciphers.html</a> for reference (Use short names)</p>
+<h2 id="Bluestack-screenshot"><a href="#Bluestack-screenshot" class="headerlink" title="Bluestack screenshot"></a><a href="https://www.browserstack.com/screenshots/" target="_blank" rel="noopener">Bluestack screenshot</a></h2><p>We used this tool to check if all supported browser can establish connection to our website.</p>
+<h1 id="Config-example"><a href="#Config-example" class="headerlink" title="Config example"></a>Config example</h1><p>The setting should be placed under corresponding VirtualHost tag httpd.conf or ssl.conf, or some other customized .conf file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SSLProtocol all -SSLv2 -SSLv3</div><div class="line">SSLHonorCipherOrder on</div><div class="line">SSLCipherSuite All:!aNULL:!eNULL:!LOW:!RC4:!MD5&quot;</div></pre></td></tr></table></figure>
+<p>SSLProtocol should be self-explanatory.<br>For SSLCipherSuite, check syntax at <a href="http://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslciphersuite" target="_blank" rel="noopener">http://httpd.apache.org/docs/2.4/mod/mod_ssl.html#sslciphersuite</a>,<br>check available suites at <a href="https://www.openssl.org/docs/apps/ciphers.html" target="_blank" rel="noopener">https://www.openssl.org/docs/apps/ciphers.html</a>.</p>
+<p>We can also do a whitelist approach like:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SSLCipherSuite HIGH:MEDEUM:!LOW</div></pre></td></tr></table></figure></p>
+<p>Here is a guideline you can follow:<br><a href="http://httpd.apache.org/docs/trunk/ssl/ssl_howto.html" target="_blank" rel="noopener">SSL/TLS Strong Encryption: How-To</a></p>
+<h1 id="Common-issues"><a href="#Common-issues" class="headerlink" title="Common issues"></a>Common issues</h1><h2 id="Config-does-not-get-reflected-even-after-httpd-restart"><a href="#Config-does-not-get-reflected-even-after-httpd-restart" class="headerlink" title="Config does not get reflected even after httpd restart"></a>Config does not get reflected even after httpd restart</h2><p>This means that there are other VirtualHost tag or other config file overrided your configuration, you need to find it out.</p>
+<h2 id="Forward-secrecy-not-enabled"><a href="#Forward-secrecy-not-enabled" class="headerlink" title="Forward secrecy not enabled"></a>Forward secrecy not enabled</h2><p>Add this line to apache config:</p>
+<blockquote>
+<p>SSLHonorCipherOrder on</p>
+</blockquote>
+<h2 id="Anonymous-cipher-suites-are-not-disabled"><a href="#Anonymous-cipher-suites-are-not-disabled" class="headerlink" title="Anonymous cipher suites are not disabled"></a>Anonymous cipher suites are not disabled</h2><p>Add !aNULL to SSLCipherSuite </p>
+<h1 id="Other-Reference"><a href="#Other-Reference" class="headerlink" title="Other Reference"></a>Other Reference</h1><p><a href="https://drjohnstechtalk.com/blog/2011/09/the-basics-of-how-to-work-with-ciphers/" target="_blank" rel="noopener">The Basics of How to Work with Cipher Settings - Dr John’s Tech Talk</a><br><a href="http://swissec.blogspot.com/2013/12/ssl-and-penetration-test.html" target="_blank" rel="noopener">SSL and Penetration Test</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2015/07/19/hexo-workflow/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2015/07/08/hexo/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2015/07/19/apache-ssl-config/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-07-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Apache/">Apache<span>1</span></a></li> <li><a href="/blog/tags/server/">server<span>1</span></a></li> <li><a href="/blog/tags/ssl/">ssl<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

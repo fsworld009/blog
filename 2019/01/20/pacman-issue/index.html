@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Issue with pacman | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Been struggling to get my Arch Linux instance to do the upgrade for the pasttwo days.
+First off, one of the PGP Key on my local is expired, so every pacman commandwill return1error: pkgbuilder: signature from &#34;Chris Warrick &amp;lt;kwpolska@gmail.com&amp;gt;&#34; is unknown trust
+and I cannot update archlinux-keyring to get the latest, renewed key becauseI don’t have a valid key, it’s a infinite loop.
+Later on I figured out that I need to temporarily disable pkgbuilder upgrades,described in here.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Issue with pacman"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Issue with pacman</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Been struggling to get my Arch Linux instance to do the upgrade for the past<br>two days.</p>
+<p>First off, one of the PGP Key on my local is expired, so every pacman command<br>will return<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">error: </span>pkgbuilder: signature from "Chris Warrick &lt;kwpolska@gmail.com&gt;" is unknown trust</div></pre></td></tr></table></figure></p>
+<p>and I cannot update <code>archlinux-keyring</code> to get the latest, renewed key because<br>I don’t have a valid key, it’s a infinite loop.</p>
+<p>Later on I figured out that I need to temporarily disable pkgbuilder upgrades,<br>described in <a href="../../../../2017/12/29/pacman/">here</a>.</p>
+<a id="more"></a>
+<p>After the upgrade is done, I cannot open VS Code or Google Chrome anymore.<br>It looks like an issue with chromium based Apps.</p>
+<p><code>code --verbose</code> returns<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/var/run/dbus/system_bus_socket: No such <span class="keyword">file</span> <span class="keyword">or</span> directory</div><div class="line"><span class="keyword">shared</span> memfd <span class="keyword">open</span>() failed: <span class="keyword">Function</span> <span class="keyword">not</span> implemented</div></pre></td></tr></table></figure></p>
+<p>and <code>google-chrome-stable --verbose</code> returns<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Failed <span class="keyword">to</span> move <span class="keyword">to</span> new namespace: PID namespaces supported,<span class="built_in"> Network </span>namespace supported, but failed: errno = Permission denied</div></pre></td></tr></table></figure></p>
+<p>I managed to resolve d-bus issue by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/run/dbus</div><div class="line">sudo dbus-daemon --config-file=/usr/share/dbus-1/system.conf</div></pre></td></tr></table></figure></p>
+<p>and the namespace issue by opening bash with Administrator, but I’m not able to<br>resolve that memfd open() error.</p>
+<p>Turns out this is a regression introduced by udev and libudev1.<br><a href="https://github.com/WhitewaterFoundry/WLinux/issues/285#issuecomment-453153832" target="_blank" rel="noopener">(source)</a></p>
+<p>Now I’m stuck here because pacman basically forcing every package to be on the<br>latest version. Yes there is a way to downgrade certain packages, but that means<br>all dependencies will be downgraded, too, so I can’t garantee that would work<br>as well.</p>
+<p>At this point I am thinking about giving up on Arch Linux and pacman, almost<br>every time there is some issue when doing system upgrades.</p>
+<p>Now thinking about it, the way pacman handle packages is unstable to me.</p>
+<p>Sometimes I just need to upgrade one package, but pacman will upgrade everything<br>to the latest, which means the whole system will be at risk of breaking.</p>
+<p>It has its advantages, but I don’t think I have enough knowledge and patience<br>to handle these upgrades issues.</p>
+<p>I think it’s time to try other distros :thinking_face:</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2019/01/20/wsl-ubuntu/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2018/06/24/wsl-archlinux/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2019/01/20/pacman-issue/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-01-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Archlinux/">Archlinux<span>4</span></a></li> <li><a href="/blog/tags/linux/">linux<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

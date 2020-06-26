@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Version manage all the things | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Recently I’ve re-installed Nodejs, python, and Ruby on my work machine.When installing Ruby via Homebrew I was having trouble using it afterinstallation, then my collegue figured out that brew info ruby outputsthis message:
+123456789101112131415By default, binaries installed by gem will be placed into:  /usr/local/lib/ruby/gems/2.6.0/binYou may want to add this to your PATH.ruby is keg-only, which means it was not symlinked into /usr/local,because macOS already provides this software and installing another version inparallel can cause all kinds of trouble.If you need to have ruby first in your PATH run:  echo &#39;export PATH=&#34;/usr/local/opt/ruby/bin:$PATH&#34;&#39; &amp;gt;&amp;gt; ~/.zshrcFor compilers to find ruby you may need to set:  export LDFLAGS=&#34;-L/usr/local/opt/ruby/lib&#34;  export CPPFLAGS=&#34;-I/usr/local/opt/ruby/include&#34;
+At this point I think it’s probably just better avoid installing Ruby viahomebrew. I searched a bit and decided to go with version managers like nvm.
+This article is a quick note on what I ended up using for each languageand how did I installed them.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Version manage all the things"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Version manage all the things</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Recently I’ve re-installed Nodejs, python, and Ruby on my work machine.<br>When installing Ruby via Homebrew I was having trouble using it after<br>installation, then my collegue figured out that <code>brew info ruby</code> outputs<br>this message:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">By default, binaries installed <span class="keyword">by</span> gem will be placed <span class="keyword">into</span>:</div><div class="line">  /usr/<span class="keyword">local</span>/lib/ruby/gems/<span class="number">2.6</span><span class="number">.0</span>/bin</div><div class="line"></div><div class="line">You may want <span class="keyword">to</span> add this <span class="keyword">to</span> your PATH.</div><div class="line"></div><div class="line">ruby <span class="keyword">is</span> keg-only, which means <span class="keyword">it</span> was <span class="keyword">not</span> symlinked <span class="keyword">into</span> /usr/<span class="keyword">local</span>,</div><div class="line">because macOS already provides this software <span class="keyword">and</span> installing another <span class="built_in">version</span> <span class="keyword">in</span></div><div class="line">parallel can cause all kinds <span class="keyword">of</span> trouble.</div><div class="line"></div><div class="line">If you need <span class="keyword">to</span> have ruby <span class="keyword">first</span> <span class="keyword">in</span> your PATH <span class="built_in">run</span>:</div><div class="line">  echo 'export PATH=<span class="string">"/usr/local/opt/ruby/bin:$PATH"</span>' &gt;&gt; ~/.zshrc</div><div class="line"></div><div class="line">For compilers <span class="keyword">to</span> find ruby you may need <span class="keyword">to</span> <span class="keyword">set</span>:</div><div class="line">  export LDFLAGS=<span class="string">"-L/usr/local/opt/ruby/lib"</span></div><div class="line">  export CPPFLAGS=<span class="string">"-I/usr/local/opt/ruby/include"</span></div></pre></td></tr></table></figure>
+<p>At this point I think it’s probably just better avoid installing Ruby via<br>homebrew. I searched a bit and decided to go with version managers like nvm.</p>
+<p>This article is a quick note on what I ended up using for each language<br>and how did I installed them.</p>
+<a id="more"></a>
+<h2 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h2><p>rbenv <a href="https://github.com/rbenv/rbenv.git" target="_blank" rel="noopener">https://github.com/rbenv/rbenv.git</a></p>
+<ul>
+<li>I prefer installation with git <a href="https://github.com/rbenv/rbenv#basic-github-checkout" target="_blank" rel="noopener">https://github.com/rbenv/rbenv#basic-github-checkout</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/rbenv/rbenv.git ~/.rbenv</div><div class="line"><span class="comment"># use a stable release instead of master</span></div><div class="line">$ <span class="built_in">cd</span> ~/.rbenv</div><div class="line">$ git checkout &#123;version_tag&#125;</div><div class="line"></div><div class="line"><span class="comment"># install ruby-build which is required for installing anything</span></div><div class="line">$ mkdir -p <span class="string">"<span class="variable">$(rbenv root)</span>"</span>/plugins</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/rbenv/ruby-build.git <span class="string">"<span class="variable">$(rbenv root)</span>"</span>/plugins/ruby-build</div><div class="line">$ <span class="built_in">cd</span> <span class="string">"<span class="variable">$(rbenv root)</span>"</span>/plugins/ruby-build</div><div class="line"><span class="comment"># use a stable release instead of master</span></div><div class="line">$ git checkout &#123;version_tag&#125;</div><div class="line"></div><div class="line"><span class="comment"># update .bashrc, or manually edit your ~/.bashrc, ~/.bash_profile</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile</div><div class="line"></div><div class="line"><span class="comment"># install ruby and gem</span></div><div class="line">rbenv install 2.6.3</div><div class="line"><span class="comment"># use this version globally</span></div><div class="line">rbenv global 2.6.3</div><div class="line"><span class="comment"># install desired gem packages</span></div><div class="line">gem install sass</div><div class="line">gem install compass</div></pre></td></tr></table></figure>
+<p>I’d like to make my <code>.bashrc</code> more portable so I added some<br>checks to see if rbenv is installed before executing <code>rbenv init</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script/3931779#3931779</span></div><div class="line"><span class="function"><span class="title">command_exists</span></span> () &#123;</div><div class="line">    <span class="built_in">type</span> <span class="string">"<span class="variable">$1</span>"</span> &amp;&gt; /dev/null ;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$HOME</span>/.rbenv/"</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$HOME</span>/.rbenv/bin:<span class="variable">$PATH</span>"</span></div><div class="line">  <span class="keyword">if</span> command_exists rbenv; <span class="keyword">then</span></div><div class="line">    <span class="built_in">eval</span> <span class="string">"<span class="variable">$(rbenv init -)</span>"</span></div><div class="line">  <span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>pyenv <a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">https://github.com/pyenv/pyenv</a></p>
+<ul>
+<li>I prefer installation with git <a href="https://github.com/pyenv/pyenv#basic-github-checkout" target="_blank" rel="noopener">https://github.com/pyenv/pyenv#basic-github-checkout</a></li>
+</ul>
+<p>The step is pretty much similar to rbenv in general<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</div><div class="line"><span class="comment"># use a stable release instead of master</span></div><div class="line">$ <span class="built_in">cd</span> ~/.pyenv</div><div class="line">$ git checkout &#123;version_tag&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># update .bashrc, or manually edit your ~/.bashrc, ~/.bash_profile</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'export PYENV_ROOT="$HOME/.pyenv"'</span> &gt;&gt; ~/.bash_profile</div><div class="line"><span class="built_in">echo</span> <span class="string">'export PATH="$PYENV_ROOT/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile</div><div class="line"></div><div class="line"><span class="comment"># install ruby and gem</span></div><div class="line">pyenv install 3.7.3</div><div class="line"><span class="comment"># use this version globally</span></div><div class="line">pyenv global 3.7.3</div><div class="line"><span class="comment"># install desired pip packages</span></div><div class="line">pip install pipenv</div></pre></td></tr></table></figure></p>
+<p>Similarly, I also added some checks before doing <code>pyenv init</code>, so that<br>it won’t break if I’m in an environment without pyenv:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$HOME</span>/.pyenv/"</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> PYENV_ROOT=<span class="string">"<span class="variable">$HOME</span>/.pyenv"</span></div><div class="line">  <span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>"</span></div><div class="line">  <span class="keyword">if</span> command_exists pyenv; <span class="keyword">then</span></div><div class="line">    <span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv init -)</span>"</span></div><div class="line">  <span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure></p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p>nvm <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p>
+<ul>
+<li>I prefer installation with git <a href="https://github.com/nvm-sh/nvm#git-install" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm#git-install</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/nvm-sh/nvm.git ~/.nvm</div><div class="line"><span class="comment"># use a stable release instead of master</span></div><div class="line">$ <span class="built_in">cd</span> ~/.nvm</div><div class="line">$ git checkout &#123;version_tag&#125;</div><div class="line"></div><div class="line"><span class="comment"># update .bashrc, or manually edit your ~/.bashrc, ~/.bash_profile</span></div><div class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span>  <span class="comment"># This loads nvm</span></div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span>  <span class="comment"># This loads nvm bash_completion</span></div><div class="line"></div><div class="line"><span class="comment"># install latest nodejs v10 stable</span></div><div class="line">$ nvm install 10</div><div class="line">$ nvm use 10</div><div class="line"><span class="comment"># set default version to v10</span></div><div class="line">$ nvm <span class="built_in">alias</span> default 10</div><div class="line"></div><div class="line"><span class="comment"># install npm packages</span></div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>Again, making <code>.bashrc</code> more general by checking file existence beforehand:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span></div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>Note: to use nvm in fish shell, install <a href="https://github.com/jorgebucaran/fisher" target="_blank" rel="noopener">fisher</a><br>and do <code>fisher add FabioAntunes/fish-nvm</code></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2019/01/20/wsl-ubuntu/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2019/07/29/version-manage-all-the-things/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-07-29 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Nodejs/">Nodejs<span>1</span></a></li> <li><a href="/blog/tags/Ruby/">Ruby<span>1</span></a></li> <li><a href="/blog/tags/python/">python<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

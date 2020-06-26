@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>webpack | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="OUTDATED">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="webpack"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> webpack</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><strong>OUTDATED</strong><br><a id="more"></a></p>
+<h2 id="Caution-this-article-is-outdated-and-has-too-much-misinformation"><a href="#Caution-this-article-is-outdated-and-has-too-much-misinformation" class="headerlink" title="Caution: this article is outdated and has too much misinformation."></a>Caution: this article is outdated and has too much misinformation.</h2><p><a href="https://webpack.github.io/" target="_blank" rel="noopener">webpack</a> is a module bundler for Froned-end web development. It aims to provide a way to automate resources including, minifying, and uglifying so that you don’t need to manually insert them in your HTML.</p>
+<p>There are other packages doing front-end resource packaging or load handling, such as require.js, bower, browserify. I don’t have much experience on these packages so I’m not going to do any compare&amp;comparison here. I chose webpack simply because it looks like the JS community is in favor of webpack at this point.</p>
+<h2 id="Pros-and-cons"><a href="#Pros-and-cons" class="headerlink" title="Pros and cons"></a>Pros and cons</h2><p>Some advantages I can see after I tried webpack:</p>
+<ul>
+<li>You only need to include the bundle script in the html, no need to keep adding script and link tags</li>
+<li>Be able to use require(“”) in browser javascript, separating modules and reduce the use of global variables</li>
+<li>You can require packages from node_modules like you do in Node.js code, there are some advantages of doing this:<ul>
+<li>You can share common-used libs (like jQuery, underscore) between Front-end and Back-end code</li>
+<li>Update Front-end dependencies directly by npm, you don’t need to replace resources manually anymore</li>
+</ul>
+</li>
+</ul>
+<p>As of cons, I haven’t really do heavy developments so I cannot tell mush, I can only think of two now:</p>
+<ul>
+<li>It’s not easy to make webpack work in the beginning, it took me almost 2 days to bundle a Hello World app with React and Semantic UI.</li>
+<li>You need run webpack every time you update something in your code, this can be solved by using <a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="noopener">webpack-dev-server</a> package, but again it is another pain to set it up properly. I’ll briefly talk about it at the end of the article</li>
+</ul>
+<p>I’m not an export on it so in this article I’ll only show my working config and some key points.</p>
+<p>The webpack version is 1.12.14 by the time I wrote this article.</p>
+<h2 id="Example-script"><a href="#Example-script" class="headerlink" title="Example script"></a>Example script</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"./css/semantic.css"</span>);</div><div class="line"></div><div class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = <span class="built_in">require</span>(<span class="string">"jquery"</span>);</div><div class="line"><span class="keyword">var</span> semantic = <span class="built_in">require</span>(<span class="string">"./js/semantic.js"</span>);</div><div class="line"><span class="keyword">var</span> React = <span class="built_in">require</span>(<span class="string">"react"</span>);</div><div class="line"><span class="keyword">var</span> ReactDOM = <span class="built_in">require</span>(<span class="string">"react-dom"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> HelloWorld = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;p&gt;</div><div class="line">        Hello, &lt;input type=<span class="string">"text"</span> placeholder=<span class="string">"Your name here"</span> /&gt;!</div><div class="line">        It is &#123;<span class="keyword">this</span>.props.date.toTimeString()&#125;</div><div class="line">      &lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;);</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">setInterval(function() &#123;</span></div><div class="line"><span class="regexp">  ReactDOM.render(</span></div><div class="line"><span class="regexp">    &lt;HelloWorld date=&#123;new Date()&#125; /</span>&gt;,</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</div><div class="line">  );</div><div class="line">&#125;, <span class="number">500</span>);</div></pre></td></tr></table></figure>
+<p>Here, I require jQuery and react from node_modules. For jQuery, I need to use window object because of the semantic ui scripts.</p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><blockquote>
+<p>npm install webpack –save-dev</p>
+</blockquote>
+<p>Make sure you save it as dev dependencies only. I would suggest install it globally also, if this is your first time using it.</p>
+<blockquote>
+<p>npm install webpack -g</p>
+</blockquote>
+<p>The reason is that you can test it without “npm run” commands. just type ‘webpack’ in bash and kick of the bundle process.</p>
+<h2 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h2><p>Take this config file for example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> config = &#123;</div><div class="line">    entry: <span class="string">'./web/index.jsx'</span>,</div><div class="line">    output: &#123;</div><div class="line">        path: path.resolve(__dirname, <span class="string">'web/build/'</span>),</div><div class="line">        publicPath: <span class="string">"./build/"</span>,</div><div class="line">        filename: <span class="string">'bundle.js'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [</div><div class="line">              &#123;</div><div class="line">                test: <span class="regexp">/\.jsx$/</span>,</div><div class="line">                loader: <span class="string">'babel-loader'</span>,</div><div class="line">                query: &#123;</div><div class="line">                  presets: [<span class="string">'babel-preset-react'</span>]</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.json$/</span>, <span class="attr">loader</span>: <span class="string">"json-loader"</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif)$/</span>, <span class="attr">loader</span>: <span class="string">'url-loader?limit=8192'</span> &#125;, <span class="comment">// inline base64 URLs for &lt;=8k images, direct URLs for the rest</span></div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.woff(2)?$/</span>,   <span class="attr">loader</span>: <span class="string">"url-loader?prefix=font/&amp;limit=5000"</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.(eot|ttf|svg)$/</span>,    <span class="attr">loader</span>: <span class="string">"file-loader?prefix=font/"</span> &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports=config;</div></pre></td></tr></table></figure>
+<p>my project folder structure:</p>
+<ul>
+<li>root<ul>
+<li>web<ul>
+<li>build<ul>
+<li>(bundle.js goes here)</li>
+</ul>
+</li>
+<li>index.html</li>
+<li>index.jsx</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h2><ul>
+<li>By default the config file is at webpack.config.js in your project root.</li>
+<li><strong>It seems that there is no type checking when paring config files</strong>, so make sure you’re passing lists when you should, or else you’ll end up getting errors from webpack dependencies and stuck for a few hours <a href="https://github.com/webpack/webpack/issues/2242" target="_blank" rel="noopener">like me</a></li>
+<li><p>entry property specifies the main script file to pack, I’m doing a single page app now so there is only one file. For multiple entry points, check <a href="https://webpack.github.io/docs/multiple-entry-points.html" target="_blank" rel="noopener">this article</a></p>
+</li>
+<li><p>publicPath means “the relative path from index.jsx to the output file”, it is used when you’re bundling any files other than css/js (like fonts and sprites)</p>
+</li>
+<li><p>You need to specify loaders to deal with each type of resource files.<br>I construct the loaders mainly from this <a href="https://github.com/webpack/example-app/blob/master/webpack.config.js" target="_blank" rel="noopener">webpack-example repo</a> and <a href="https://github.com/petehunt/webpack-howto" target="_blank" rel="noopener">this howto repo</a></p>
+</li>
+<li>For react JSX files (*.jsx), you need to use loader “babel-loader” and preset “babel-preset-react” to handle JSX syntax.</li>
+<li><strong>Make sure you installed all loaders and presets in your config</strong>, for the example above, I need to npm install these packages as dev-dependencies:<ul>
+<li><blockquote>
+<p>npm install babel-loader babel-preset-react style-loader css-loader url-loader file-loader —save-dev</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h2><p>run</p>
+<blockquote>
+<p>webpack</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>webpack –config webpack.dev-pack.config.js</p>
+</blockquote>
+<p>if you want to specify which file you want to use</p>
+<p>Now the only script you need to insert into the index.html is the bundle.js files<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./build/bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>webpack-dev-server gives you a http server that watches changes and do bundle tasks automatically. You should only use it for dev purposes.</p>
+<p>Install it from npm:</p>
+<blockquote>
+<p>npm install webpack-dev-server –save-dev</p>
+</blockquote>
+<p>Or globally</p>
+<blockquote>
+<p>npm install webpack-dev-server -g</p>
+</blockquote>
+<p>In order to work with webpack-dev-server, I changed my config as folows:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> config = &#123;</div><div class="line">    entry: [<span class="string">'webpack/hot/dev-server'</span>, path.resolve(__dirname, <span class="string">'web/index.jsx'</span>)],</div><div class="line">    output: &#123;</div><div class="line">        path: path.resolve(__dirname, <span class="string">'web/build/'</span>),</div><div class="line">        publicPath: <span class="string">"/web/build/"</span>,</div><div class="line">        filename: <span class="string">'bundle.js'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [</div><div class="line">              &#123;</div><div class="line">                test: <span class="regexp">/\.jsx$/</span>,</div><div class="line">                loader: <span class="string">'babel-loader'</span>,</div><div class="line">                query: &#123;</div><div class="line">                  presets: [<span class="string">'babel-preset-react'</span>]</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.json$/</span>, <span class="attr">loader</span>: <span class="string">"json-loader"</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">'style-loader!css-loader'</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.(png|jpg|gif)$/</span>, <span class="attr">loader</span>: <span class="string">'url-loader?limit=8192'</span> &#125;, <span class="comment">// inline base64 URLs for &lt;=8k images, direct URLs for the rest</span></div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.woff(2)?$/</span>,   <span class="attr">loader</span>: <span class="string">"url-loader?prefix=font/&amp;limit=5000"</span> &#125;,</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.(eot|ttf|svg)$/</span>,    <span class="attr">loader</span>: <span class="string">"file-loader?prefix=font/"</span> &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">      <span class="keyword">new</span> webpack.NoErrorsPlugin()</div><div class="line">    ]</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports=config;</div></pre></td></tr></table></figure></p>
+<p>Key Differences:</p>
+<ul>
+<li>add “webpack/hot/dev-server” in entry</li>
+<li>publicPath needs to be “absolute path with your project home as root”</li>
+<li>(optional) add webpack.NoErrorsPlugin() to stop hot reloading when the script has error</li>
+</ul>
+<p>Now run dev-server</p>
+<blockquote>
+<p>webpack-dev-server –config webpack.dev-server.config.js –devtool eval –progress –colors –hot</p>
+</blockquote>
+<p>Then go to <a href="http://localhost:8080/webpack-dev-server/web/" target="_blank" rel="noopener">http://localhost:8080/webpack-dev-server/web/</a> to see the page. Make some changes on jsx and save, you should see hot reloading happens. Saving HTML page doesn’t trigger a hot reload, I guess it only watches files listed in “entry” property.</p>
+<p>check all availables options at <a href="https://webpack.github.io/docs/webpack-dev-server.html#webpack-dev-server-cli" target="_blank" rel="noopener">webpack-dev-server</a></p>
+<p>Finally, if you don’t want to install webpack and webpack-dev-server globally, you need to put the config in package.json:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  "scripts": &#123;</div><div class="line">    "dev-pack": "webpack --config webpack.dev-pack.config.js",</div><div class="line">    "dev-server": "webpack-dev-server --config webpack.dev-server.config.js --devtool eval --progress --colors --hot"</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>and do</p>
+<blockquote>
+<p>num run dev-pack<br>num run dev-server</p>
+</blockquote>
+<p>respectively</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="http://rhadow.github.io/2015/04/02/webpack-workflow/" target="_blank" rel="noopener">http://rhadow.github.io/2015/04/02/webpack-workflow/</a><br><a href="http://survivejs.com/webpack_react/developing_with_webpack/" target="_blank" rel="noopener">http://survivejs.com/webpack_react/developing_with_webpack/</a><br><a href="http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup" target="_blank" rel="noopener">http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup</a><br><a href="https://github.com/dmachat/angular-webpack-cookbook/wiki/Deploy-to-production" target="_blank" rel="noopener">https://github.com/dmachat/angular-webpack-cookbook/wiki/Deploy-to-production</a><br><a href="https://github.com/petehunt/webpack-howto" target="_blank" rel="noopener">https://github.com/petehunt/webpack-howto</a><br><a href="http://blog.kkbruce.net/2015/10/webpack.html#.Vvfymj-rii4" target="_blank" rel="noopener">http://blog.kkbruce.net/2015/10/webpack.html#.Vvfymj-rii4</a><br><a href="https://github.com/webpack/example-app/blob/master/webpack.config.js" target="_blank" rel="noopener">https://github.com/webpack/example-app/blob/master/webpack.config.js</a></p>
+<p><a href="http://stackoverflow.com/questions/34538466/error-cannot-resolve-module-babel-loader" target="_blank" rel="noopener">Error: Cannot resolve module ‘babel-loader’</a><br><a href="http://stackoverflow.com/questions/34574403/how-to-set-resolve-for-babel-loader-presets" target="_blank" rel="noopener">How to set resolve for babel-loader presets</a><br><a href="https://github.com/petehunt/webpack-howto/issues/30" target="_blank" rel="noopener">Module not found: Error: Cannot resolve module” for react-router and react</a><br><a href="http://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack" target="_blank" rel="noopener">Managing Jquery plugin dependency in webpack</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2016/03/27/semantic-ui-install/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2016/03/26/mac/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2016/03/27/webpack/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-03-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Front-End/">Front-End<span>4</span></a></li> <li><a href="/blog/tags/javascript/">javascript<span>4</span></a></li> <li><a href="/blog/tags/npm/">npm<span>3</span></a></li> <li><a href="/blog/tags/webpack/">webpack<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

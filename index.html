@@ -1,0 +1,648 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header page-header-inverse ">
+  <h1 class="title title-inverse ">Developer 009</h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<!-- <div class="slogan">
+      <i class="fa fa-heart"></i>
+      
+</div>     -->
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-07-29 </div>
+			<div class="article-title"><a href="/blog/2019/07/29/version-manage-all-the-things/" >Version manage all the things</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Recently I’ve re-installed Nodejs, python, and Ruby on my work machine.<br>When installing Ruby via Homebrew I was having trouble using it after<br>installation, then my collegue figured out that <code>brew info ruby</code> outputs<br>this message:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">By default, binaries installed <span class="keyword">by</span> gem will be placed <span class="keyword">into</span>:</div><div class="line">  /usr/<span class="keyword">local</span>/lib/ruby/gems/<span class="number">2.6</span><span class="number">.0</span>/bin</div><div class="line"></div><div class="line">You may want <span class="keyword">to</span> add this <span class="keyword">to</span> your PATH.</div><div class="line"></div><div class="line">ruby <span class="keyword">is</span> keg-only, which means <span class="keyword">it</span> was <span class="keyword">not</span> symlinked <span class="keyword">into</span> /usr/<span class="keyword">local</span>,</div><div class="line">because macOS already provides this software <span class="keyword">and</span> installing another <span class="built_in">version</span> <span class="keyword">in</span></div><div class="line">parallel can cause all kinds <span class="keyword">of</span> trouble.</div><div class="line"></div><div class="line">If you need <span class="keyword">to</span> have ruby <span class="keyword">first</span> <span class="keyword">in</span> your PATH <span class="built_in">run</span>:</div><div class="line">  echo 'export PATH=<span class="string">"/usr/local/opt/ruby/bin:$PATH"</span>' &gt;&gt; ~/.zshrc</div><div class="line"></div><div class="line">For compilers <span class="keyword">to</span> find ruby you may need <span class="keyword">to</span> <span class="keyword">set</span>:</div><div class="line">  export LDFLAGS=<span class="string">"-L/usr/local/opt/ruby/lib"</span></div><div class="line">  export CPPFLAGS=<span class="string">"-I/usr/local/opt/ruby/include"</span></div></pre></td></tr></table></figure>
+<p>At this point I think it’s probably just better avoid installing Ruby via<br>homebrew. I searched a bit and decided to go with version managers like nvm.</p>
+<p>This article is a quick note on what I ended up using for each language<br>and how did I installed them.</p>
+	
+	</div>
+  <a type="button" href="/blog/2019/07/29/version-manage-all-the-things/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-01-20 </div>
+			<div class="article-title"><a href="/blog/2019/01/20/wsl-ubuntu/" >Install Ubuntu instance in WSL</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>There is already one when you enable WSL, but I’d like to install it on<br>different drives, and not need to worry about messing it up, so I discovered<br>a WSL Management tool <a href="https://github.com/DDoSolitary/LxRunOffline" target="_blank" rel="noopener">LxRunOffline</a></p>
+	
+	</div>
+  <a type="button" href="/blog/2019/01/20/wsl-ubuntu/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2019-01-20 </div>
+			<div class="article-title"><a href="/blog/2019/01/20/pacman-issue/" >Issue with pacman</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Been struggling to get my Arch Linux instance to do the upgrade for the past<br>two days.</p>
+<p>First off, one of the PGP Key on my local is expired, so every pacman command<br>will return<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">error: </span>pkgbuilder: signature from "Chris Warrick &lt;kwpolska@gmail.com&gt;" is unknown trust</div></pre></td></tr></table></figure></p>
+<p>and I cannot update <code>archlinux-keyring</code> to get the latest, renewed key because<br>I don’t have a valid key, it’s a infinite loop.</p>
+<p>Later on I figured out that I need to temporarily disable pkgbuilder upgrades,<br>described in <a href="../../../../2017/12/29/pacman/">here</a>.</p>
+	
+	</div>
+  <a type="button" href="/blog/2019/01/20/pacman-issue/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2018-06-24 </div>
+			<div class="article-title"><a href="/blog/2018/06/24/wsl-archlinux/" >Setup Arch Linux in WSL</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Recently I have tried to install Arch Linux under WSL (Windows Subsystem for Linux). So far I have positive experience and I actually prefer WSL over VirtualBox as my working environment under Windows 10.</p>
+<p>Of course WSL is not perfect, compare to installing Arch under VirtualBox:</p>
+<ul>
+<li>Pros<ul>
+<li>Faster startup time (just as fast as open a cmd window)</li>
+<li>Share files bet</li>
+<li>Running GUI apps via XServer is much more responsive, I think this is mostly because we don’t need to run GUI via SSH with this setup.</li>
+</ul>
+</li>
+<li>Cons<ul>
+<li>No “save machine state” functionality from VirtualBox</li>
+<li>No audio support</li>
+<li>There will always be a chance of running into compatibility issues, especially GUI apps.</li>
+<li>You cannot edit any file under WSL data folder from Windows side, the file may become corrupted in WSL.</li>
+<li>WSL won’t see any new file created (except share folders under <code>/mnt/</code>), so if you want to copy some files into WSL, you have to copy it in WSL shell via <code>/mnt/</code> folder</li>
+</ul>
+</li>
+</ul>
+<p>I prefer WSL mainly because of better GUI experience, as I use VS Code for development most of the time.<br>
+	
+	</div>
+  <a type="button" href="/blog/2018/06/24/wsl-archlinux/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2018-06-18 </div>
+			<div class="article-title"><a href="/blog/2018/06/18/package-managers-windows-mac/" >Package Managers for Windows and Mac</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Cheetsheet"><a href="#Cheetsheet" class="headerlink" title="Cheetsheet"></a>Cheetsheet</h2><table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Choco</th>
+<th>Brew</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upgrade manager</td>
+<td>choco upgrade chocolatey</td>
+<td>brew update</td>
+</tr>
+<tr>
+<td>List installed packages</td>
+<td>choco list –local-only</td>
+<td>brew list</td>
+</tr>
+<tr>
+<td>Search package</td>
+<td>choco search pkg –by-id-only</td>
+<td>brew search pkg1</td>
+</tr>
+<tr>
+<td>Install package</td>
+<td>choco install pkg1 pkg2</td>
+<td>brew install pkg1 pkg2</td>
+</tr>
+<tr>
+<td>Check outdated packages</td>
+<td>choco outdated</td>
+<td>brew outdated</td>
+</tr>
+<tr>
+<td>Update all packages</td>
+<td>choco upgrade all</td>
+<td>brew upgrade</td>
+</tr>
+<tr>
+<td>Update specific packages</td>
+<td>choco upgrade pkg1 pkg2</td>
+<td>brew upgrade pkg1 pkg2</td>
+</tr>
+</tbody>
+</table>
+	
+	</div>
+  <a type="button" href="/blog/2018/06/18/package-managers-windows-mac/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2018-01-03 </div>
+			<div class="article-title"><a href="/blog/2018/01/03/semantic-ui/" >Semantic UI</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><a href="https://semantic-ui.com/" target="_blank" rel="noopener">Semantic UI</a> is a component-based webpage layout Framework. I have used it on some of my personal projects and I really like it. Here are some of the benefits:</p>
+<ul>
+<li>Components driven. You only pick up components you need</li>
+<li>Ability to mix different themes in one project</li>
+<li>Provide site level overrides so you don’t need to touch theme files themselves</li>
+<li>Built-in Form validation</li>
+<li>Components have initialize and destroy methods so they can be integrated as ReactJs and Vue.js components</li>
+</ul>
+	
+	</div>
+  <a type="button" href="/blog/2018/01/03/semantic-ui/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-12-29 </div>
+			<div class="article-title"><a href="/blog/2017/12/29/pacman/" >Pacman package manager cheatsheet</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Pacman notes</p>
+<h2 id="Cheatsheet"><a href="#Cheatsheet" class="headerlink" title="Cheatsheet"></a>Cheatsheet</h2><table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package upgrade</td>
+<td>pacman -Syu</td>
+</tr>
+<tr>
+<td>Sync package DB</td>
+<td>pacman -Sy</td>
+</tr>
+<tr>
+<td>Search package</td>
+<td>pacman -Ss package_name</td>
+</tr>
+<tr>
+<td>Install package</td>
+<td>pacman -S package_name</td>
+</tr>
+<tr>
+<td>Remove package and unused dependencies</td>
+<td>pacman -Rs package_name</td>
+</tr>
+<tr>
+<td>List installed packages</td>
+<td>pacman -Qeq</td>
+</tr>
+<tr>
+<td>Search installed package</td>
+<td>pacman -Qs package_name</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Always do <code>pacman -Syu</code> before you install packages
+	
+	</div>
+  <a type="button" href="/blog/2017/12/29/pacman/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-12-28 </div>
+			<div class="article-title"><a href="/blog/2017/12/28/archlinux/" >Install Archlinux &amp; Xfce4 on VirtualBox</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Below are random notes I jotted down when I installed Archlinux and Xfce4 on VirtualBox. It has been a while so there might be errors here and there.</p>
+<h2 id="Guest-System-configuration"><a href="#Guest-System-configuration" class="headerlink" title="Guest System configuration"></a>Guest System configuration</h2><ul>
+<li>EFI enabled</li>
+<li>GPT partition table for all disks</li>
+<li>GRUB bootloader</li>
+<li>Network setting: NAT</li>
+</ul>
+	
+	</div>
+  <a type="button" href="/blog/2017/12/28/archlinux/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2017-11-14 </div>
+			<div class="article-title"><a href="/blog/2017/11/14/back-2017/" >Back</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>My life had been busy from Aug 2016 to Aug 2017.<br>
+	
+	</div>
+  <a type="button" href="/blog/2017/11/14/back-2017/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-10-03 </div>
+			<div class="article-title"><a href="/blog/2016/10/03/javascript-world/" >Thoughts on today&#39;s javascript world</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>Two years after becoming a Front-End developer, and spending some of my free times learning node.js and some javasciript packages, all I can say to javascript is:</p>
+<h2 id="There-are-too-many-f-king-thing-you-need-to-learn"><a href="#There-are-too-many-f-king-thing-you-need-to-learn" class="headerlink" title="There are too many f**king thing you need to learn"></a>There are too many f**king thing you need to learn</h2><p>Yeah, HTML/CSS/javascript is just the very basic, but those could already be the pain for some people. Nowadays nobody works on pure javascript, at least we need jQuery. But jQuery is not good when your code base starts to grow. So there is endless frameworks for webpage, such as Ember.js, AngularJS, Vue.js, React….so many different things you can choose/learn.</p>
+<p>Node.js and npm is another beast. Node.js gives developers to run javascript in machines directly without browser, and with full system access like python and C++. Hence, a lot of packages for developing Front-End javascript are developed in Node.js and distributed via npm.<br>I would suggest new comers to learn these things in the following order:</p>
+<h3 id="1-HTML-CSS"><a href="#1-HTML-CSS" class="headerlink" title="1. HTML/CSS"></a>1. HTML/CSS</h3><p>The most basic stuff for web pages.</p>
+<h3 id="2-Browser-javascript"><a href="#2-Browser-javascript" class="headerlink" title="2. Browser javascript"></a>2. Browser javascript</h3><p>This is the basic for the rest of the javascript world.</p>
+<h3 id="3-jQuery"><a href="#3-jQuery" class="headerlink" title="3. jQuery"></a>3. jQuery</h3><p>Pure javascript can be tricky sometimes, and browser compatibility is a nightmare. <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a> solves most. It has been around since 2006 so there are tones of jQUery plugins out there. Hence today it is still difficult to not use jQuery completely.<br>You should keep the use of jQuery in the minimal way. DOM manipulation is very convenient in jQuery, but it is very easy to be abused and create codes that is very difficult to trace and mantain, so use it wisely.<br>Personally, for new projects I try to use jQuery only for AJAX calls, and maybe some jQuery plugins that I cannot find any good alternative.</p>
+<h3 id="4-lodash"><a href="#4-lodash" class="headerlink" title="4. lodash"></a>4. lodash</h3><p><a href="https://lodash.com/" target="_blank" rel="noopener">lodash</a> is a collection of utilities like sorting, map array to another array based on a function (map), or transform a list of objects to a object map (keyBy). Another similar package is <a href="http://underscorejs.org/" target="_blank" rel="noopener">underscore.js</a> I found these packages are extremely helpful in my project, so I would definitely recommend you to learn them. Note that you only need one of them in your project.</p>
+<h3 id="5-Node-js-and-npm"><a href="#5-Node-js-and-npm" class="headerlink" title="5. Node.js and npm"></a>5. Node.js and npm</h3><p><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> is basically javascript for Back-End, but it is not just designed for web development, you can create regular programs too. <a href="https://www.npmjs.com" target="_blank" rel="noopener">npm</a> is the package manager for Node.js. Even if you only want to be a Front-End developer, you should at least learn how to run node.js codes and how to use npm, so that you can install dependencies for your Front-End project.</p>
+<p>But I would really recommend learn to code Node.js programs. It’s still javascript, and this is the shortcut for you to jump into Back-End development. Or even better, there is <a href="http://electron.atom.io/" target="_blank" rel="noopener">Electron</a>, where you can write desktop applications in javascript. There is <a href="https://www.nativescript.org/" target="_blank" rel="noopener">NativeScript</a>, where you can write native Android/iOS apps in javascript.</p>
+<h3 id="6-Whatever-you-need-for-your-project"><a href="#6-Whatever-you-need-for-your-project" class="headerlink" title="6. Whatever you need for your project"></a>6. Whatever you need for your project</h3><p>At this point you should have the ability to learn most of the packages/frameworks in javascript world.<br>Keep in mind that since there are so many packages/frameworks out there today, it is impossible to learn them all. So when you see a new framework, only focus on “What” it does, “What” are the features, “What” are the problems it trying to solve. If you think your project can benefit from that package, only then you start to learn “How” to use it. This approach will save your time and prevent you from being overwhelmed by endless new stuffs.</p>
+<p>I have been trying to figure out what is my favorite programming language since I graduated from college. I would say for now I love javascript the most The reason? Because you can just learn one language to develop everything for nearly every modern platform.</p>
+
+	
+	</div>
+  <a type="button" href="/blog/2016/10/03/javascript-world/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/blog/"><i class="fa fa-home"></i>Home</a></li>
+
+		
+		   <li class="next"> <a href="/blog/page/2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a> </li>          
+        
+	
+</ul>
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
+		
+			
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/blog/tags/Apache/">Apache<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/python/">python<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/Linux/">Linux<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/linux/">linux<span>3</span></a></li>
+		
+			<li><a href="/blog/tags/Nodejs/">Nodejs<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/blog/">blog<span>2</span></a></li>
+		
+			<li><a href="/blog/tags/webpack/">webpack<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/css/">css<span>2</span></a></li>
+		
+			<li><a href="/blog/tags/Hexo/">Hexo<span>2</span></a></li>
+		
+			<li><a href="/blog/tags/Front-End/">Front-End<span>4</span></a></li>
+		
+			<li><a href="/blog/tags/Ruby/">Ruby<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/image/">image<span>0</span></a></li>
+		
+			<li><a href="/blog/tags/Ubuntu/">Ubuntu<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/Windows/">Windows<span>3</span></a></li>
+		
+			<li><a href="/blog/tags/server/">server<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/bootstrap/">bootstrap<span>0</span></a></li>
+		
+			<li><a href="/blog/tags/npm/">npm<span>3</span></a></li>
+		
+			<li><a href="/blog/tags/WSL/">WSL<span>2</span></a></li>
+		
+			<li><a href="/blog/tags/ssl/">ssl<span>1</span></a></li>
+		
+			<li><a href="/blog/tags/Archlinux/">Archlinux<span>4</span></a></li>
+		
+		
+		   <li><a href="/tags">...<span>23</span></a></li>
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/blog/2019/07/29/version-manage-all-the-things/" ><i class="fa fa-file-o"></i>Version manage all the things</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2019/01/20/wsl-ubuntu/" ><i class="fa fa-file-o"></i>Install Ubuntu instance in ...</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2019/01/20/pacman-issue/" ><i class="fa fa-file-o"></i>Issue with pacman</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2018/06/24/wsl-archlinux/" ><i class="fa fa-file-o"></i>Setup Arch Linux in WSL</a>
+      </li>
+    
+      <li>
+        <a href="/blog/2018/06/18/package-managers-windows-mac/" ><i class="fa fa-file-o"></i>Package Managers for Window...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://www.github.com/fsworld009" title="" target="_blank"]);">Github</a></li>
+	
+		<li><i class="fa fa-twitter"></i><a href="https://www.twitter.com/fsworld009" title="" target="_blank"]);">Twitter</a></li>
+	
+		<li><i class="fa fa-stack-overflow"></i><a href="https://stackoverflow.com/users/3973896/worldfs" title="" target="_blank"]);">Stackoverflow</a></li>
+	
+		<li><i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/fsworld009/" title="" target="_blank"]);">Facebook</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/freemind/" title="Github repository for Freemind" target="_blank"]);">Freemind (Current blog theme)</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

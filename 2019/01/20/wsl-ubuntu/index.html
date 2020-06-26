@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Install Ubuntu instance in WSL | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="There is already one when you enable WSL, but I’d like to install it ondifferent drives, and not need to worry about messing it up, so I discovereda WSL Management tool LxRunOffline">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Install Ubuntu instance in WSL"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Install Ubuntu instance in WSL</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>There is already one when you enable WSL, but I’d like to install it on<br>different drives, and not need to worry about messing it up, so I discovered<br>a WSL Management tool <a href="https://github.com/DDoSolitary/LxRunOffline" target="_blank" rel="noopener">LxRunOffline</a></p>
+<a id="more"></a>
+<p>(Updated 2020/06/26: Found a note I wrote back in Sep 2019 when I was trying<br>to install WSL in a new laptop, so added a troubleshoot section below. Also<br>added a section for upgrading to WSL2)</p>
+<h2 id="Download-and-install"><a href="#Download-and-install" class="headerlink" title="Download and install"></a>Download and install</h2><ol>
+<li><p>follow the quick start <a href="https://github.com/DDoSolitary/LxRunOffline/wiki" target="_blank" rel="noopener">here</a><br>to download the Ubuntu for MS image, then install it with </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LxRunOffline i -n Ubuntu -d F:\WSL\Ubuntu -f &lt;path_to_ubuntu_image&gt; -s</div></pre></td></tr></table></figure>
+</li>
+<li><p>To start ubuntu, run</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LxRunOffline run bash -n Ubuntu</div></pre></td></tr></table></figure>
+<p>Or you can create a shortcut as well</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">LxRunOffline</span> <span class="selector-tag">s</span> <span class="selector-tag">-n</span> <span class="selector-tag">Ubuntu</span> <span class="selector-tag">-f</span> <span class="selector-tag">F</span>:\<span class="selector-tag">Ubuntu</span><span class="selector-class">.lnk</span></div></pre></td></tr></table></figure>
+<p>Or use <code>wsl</code> command</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">wsl -d Ubuntu</span></div></pre></td></tr></table></figure>
+<p>You can also set default wsl version so that you only need to type <code>wsl</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wsl --<span class="built_in">set</span>-default Ubuntu</div><div class="line">wsl</div></pre></td></tr></table></figure>
+<p>You should be login as root</p>
+</li>
+<li><p>Create User, similar to what we do in Arch Linux install, we need to create<br>a user with ability to sudo without password</p>
+<ol>
+<li><p>run <code>visudo</code> and add a new user group</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%wheel <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>) NOPASSWD: <span class="keyword">ALL</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>create user: <code>useradd -m -G wheel -s /bin/bash user1</code></p>
+</li>
+</ol>
+</li>
+<li><p>run <code>id user1</code> to get UID, and run <code>LxRunOffline su &lt;number&gt; -n Ubuntu</code>,<br>so next time you will be login as user1 on launch.</p>
+</li>
+<li><p>configure <a href="https://docs.microsoft.com/en-us/windows/desktop/api/wslapi/ne-wslapi-wsl_distribution_flags" target="_blank" rel="noopener">WSL_DISTRIBUTION_FLAGS</a>,<br>I set to 5 so that it won’t append %PATH% from Windows</p>
+<ul>
+<li><code>LxRunOffline se 5 -n Ubuntu</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="Package-Manager"><a href="#Package-Manager" class="headerlink" title="Package Manager"></a>Package Manager</h2><p>This time I’d like to try <a href="http://linuxbrew.sh/" target="_blank" rel="noopener">Linuxbrew</a><br>for installing packages for developer works (like nodejs).<br>For system packages I’ll try to stick with <code>apt</code>. This way it should be<br>safer to do upgrades for my work environment.</p>
+<p>I chose Linuxbrew mainly because my current work laptop is Mac, so it is more<br>consistent for me to switch between work laptop and my Windows PC.</p>
+<p>The other reason is that apt prefers stable over latest version, so it might be<br>difficult to get what I need for work.</p>
+<ol>
+<li><p>Following their guide to do<br><code>sudo sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh&quot;</code>,<br>I get “Don’t run this as Root!” error, but without <code>sudo</code> it won’t<br>have permission to create or write to <code>/home/linuxbrew/</code> when not using root.</p>
+</li>
+<li><p>Solution: create that folder beforehand and set owner to <code>user1</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /home/</div><div class="line">sudo mkdir linuxbrew</div><div class="line">sudo chown -R user1 linuxbrew/</div></pre></td></tr></table></figure>
+<p>Then you should be able to run the script without <code>sudo</code></p>
+</li>
+<li><p>The output message contains suggestion on following installation steps:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- Install the Linuxbrew dependencies if you have sudo access:</div><div class="line">  Debian, Ubuntu, etc.</div><div class="line">    sudo apt-get install build-essential</div><div class="line">  Fedora, Red Hat, CentOS, etc.</div><div class="line">    sudo yum groupinstall &apos;Development Tools&apos;</div><div class="line">  See http://linuxbrew.sh/#dependencies for more information.</div><div class="line">- Add Linuxbrew to your ~/.profile by running</div><div class="line">    echo &apos;eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&apos; &gt;&gt;~/.profile</div><div class="line">- Add Linuxbrew to your PATH</div><div class="line">    PATH=&quot;/home/linuxbrew/.linuxbrew/bin:$PATH&quot;</div><div class="line">- We recommend that you install GCC by running:</div><div class="line">    brew install gcc</div><div class="line">- After modifying your shell profile, you may need to restart your session</div><div class="line">  (logout and then log back in) if the brew command isn&apos;t found.</div><div class="line">- Run `brew help` to get started</div><div class="line">- Further documentation:</div><div class="line">    https://docs.brew.sh</div><div class="line">Warning: /home/linuxbrew/.linuxbrew/bin is not in your PATH.</div></pre></td></tr></table></figure>
+<p>So we do</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install build-essential</div><div class="line"></div><div class="line"><span class="comment"># This one is optional, can also edit $PATH from wsl, see step 4</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)'</span> &gt;&gt;~/.profile</div><div class="line"></div><div class="line">brew install gcc</div></pre></td></tr></table></figure>
+</li>
+<li><p>(Only required if you skipped echo ‘eval… command above)<br>Prepend <code>/home/linuxbrew/.linuxbrew/bin</code> into <code>$PATH</code>:</p>
+<ul>
+<li>LxRunOffline has option to set default environment variables but I’m not<br>sure how to edit multiple lines.</li>
+<li>So I open <code>regedit</code> and go to<br><code>Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\&lt;Distro ID&gt;</code><br>and edit <code>DefaultEnvironment</code> to<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HOSTTYPE=x86_64</div><div class="line">LANG=en_US.UTF-<span class="number">8</span></div><div class="line">PATH=<span class="regexp">/home/linuxbrew</span><span class="regexp">/.linuxbrew/bin</span><span class="symbol">:/usr/local/sbin</span><span class="symbol">:/usr/local/bin</span><span class="symbol">:/usr/sbin</span><span class="symbol">:/usr/bin</span><span class="symbol">:/sbin</span><span class="symbol">:/bin</span><span class="symbol">:/usr/games</span><span class="symbol">:/usr/local/games</span></div><div class="line">TERM=xterm-<span class="number">256</span>color</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>now you should be able to install packages, like <code>brew install git</code></p>
+</li>
+</ol>
+<h2 id="Set-timezone"><a href="#Set-timezone" class="headerlink" title="Set timezone"></a>Set timezone</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install tzdata</div></pre></td></tr></table></figure>
+<p>Then follow the instruction to set timezone</p>
+<p>To update timezone:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime</div></pre></td></tr></table></figure>
+<h2 id="Backup-instance-configs"><a href="#Backup-instance-configs" class="headerlink" title="Backup instance configs"></a>Backup instance configs</h2><ol>
+<li><p>export registry at<br><code>Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\&lt;Distro ID&gt;</code>,<br>you could check <code>DistributionName</code> and find out which one is the correct ID.</p>
+</li>
+<li><p>LxRunOffline has export config option, but I haven’t tried importing it back<br>yet: <code>LxRunOffline ec -n Ubunto -f Ubuntu.xml</code></p>
+</li>
+</ol>
+<h2 id="Probably-don’t-need-to-bother-with-running-GUI-app-anymore"><a href="#Probably-don’t-need-to-bother-with-running-GUI-app-anymore" class="headerlink" title="Probably don’t need to bother with running GUI app anymore"></a>Probably don’t need to bother with running GUI app anymore</h2><p><a href="https://github.com/Microsoft/console/issues/136#issuecomment-433151087" target="_blank" rel="noopener">The color issue on WSL console is resolved in October update (1809)</a> and <a href="https://github.com/Microsoft/vscode/issues/45693#issuecomment-449495252" target="_blank" rel="noopener">ConPTY support is available on VS Code insiders build</a>,<br>the best workflow on Windows (for me at least) now is use VS Code on Windows,<br>and launch Ubuntu terminals inside VS Code Terminal emulator.</p>
+<p>Just change your settings.json to the following:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"F:\\wsl\\LxRunOffline\\LxRunOffline.exe"</span>,</div><div class="line">  <span class="attr">"terminal.integrated.shellArgs.windows"</span>: [<span class="string">"run"</span>, <span class="string">"bash"</span>, <span class="string">"-n"</span>, <span class="string">"Ubuntu"</span>],</div><div class="line">  <span class="attr">"terminal.integrated.windowsEnableConpty"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Previously with Winpty, red bg will be rendered as yellow, and a lot of<br>black text get rendered as white, as below:</p>
+<p><img src="../../../../images/vscode_wsl_terminal_winpty.png" alt="Terminal with Winpty"></p>
+<p>Now with Conpty:</p>
+<p><img src="../../../../images/vscode_wsl_terminal_conpty.png" alt="Terminal with Conpty"></p>
+<p>Not too bad right? The font rendering is much better with Conpty as well.</p>
+<h2 id="Troubleshoot"><a href="#Troubleshoot" class="headerlink" title="Troubleshoot"></a>Troubleshoot</h2><h3 id="visudo-command-not-found"><a href="#visudo-command-not-found" class="headerlink" title="visudo command not found"></a>visudo command not found</h3><p><a href="https://askubuntu.com/questions/1103038/cant-run-visudo-within-docker-sudoers-file-does-not-exist" target="_blank" rel="noopener">https://askubuntu.com/questions/1103038/cant-run-visudo-within-docker-sudoers-file-does-not-exist</a></p>
+<h3 id="visudo-no-editor-found-editor-path-usr-bin-editor"><a href="#visudo-no-editor-found-editor-path-usr-bin-editor" class="headerlink" title="visudo: no editor found (editor path = /usr/bin/editor)"></a>visudo: no editor found (editor path = /usr/bin/editor)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt install vim</div></pre></td></tr></table></figure>
+<h3 id="useradd-group-‘wheel’-does-not-exist"><a href="#useradd-group-‘wheel’-does-not-exist" class="headerlink" title="useradd: group ‘wheel’ does not exist"></a>useradd: group ‘wheel’ does not exist</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addgroup wheel</div></pre></td></tr></table></figure>
+<h3 id="home-linuxbrew-linuxbrew-Homebrew-Library-Homebrew-brew-sh-line-4-warning-setlocale-LC-ALL-cannot-change-locale-en-US-UTF-8-No-such-file-or-directory"><a href="#home-linuxbrew-linuxbrew-Homebrew-Library-Homebrew-brew-sh-line-4-warning-setlocale-LC-ALL-cannot-change-locale-en-US-UTF-8-No-such-file-or-directory" class="headerlink" title="/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/brew.sh: line 4: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory"></a>/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/brew.sh: line 4: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory</h3><p><a href="https://askubuntu.com/questions/114759/warning-setlocale-lc-all-cannot-change-locale" target="_blank" rel="noopener">https://askubuntu.com/questions/114759/warning-setlocale-lc-all-cannot-change-locale</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y locales</div><div class="line">sudo vim /etc/locale.gen</div><div class="line"><span class="comment"># uncomment en_us.UTF-8 UTF-8 in locale.gen, then save</span></div><div class="line">sudo locale-gen</div></pre></td></tr></table></figure>
+<h2 id="Upgrade-to-WSL-2"><a href="#Upgrade-to-WSL-2" class="headerlink" title="Upgrade to WSL 2"></a>Upgrade to WSL 2</h2><p>(2020/06/26) Note that if your project is put on Windows file system and<br>shared to WSL distro, currently changing files from Windows won’t trigger<br>file change notifications on Linux side<br>(see <a href="https://github.com/microsoft/WSL/issues/4739" target="_blank" rel="noopener">https://github.com/microsoft/WSL/issues/4739</a>). A workaround<br>would be move all files into WSL file system, and access them<br>from Windows (see <a href="#Access-WSL-filesystem-from-Windows">below</a> for instructions)</p>
+<ol>
+<li>Download amnd install WSL 2 Kernel from<br><a href="https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel</a></li>
+<li><p>Enable the ‘Virtual Machine Platform’ optional component</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></li>
+<li>Open Powershell as Administrator and run: <figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wsl --<span class="built_in">set</span>-version Ubuntu 2</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Prefer setting default wsl version to 2 after this<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wsl --<span class="built_in">set</span>-default-version 2</div></pre></td></tr></table></figure></p>
+<h2 id="Access-WSL-filesystem-from-Windows"><a href="#Access-WSL-filesystem-from-Windows" class="headerlink" title="Access WSL filesystem from Windows"></a>Access WSL filesystem from Windows</h2><p>It is not recommend to edit files in WSL directly from Windows by opening files<br>from C drive (or the drive you installed the WSL). I recall that resulted<br>messing up file permissions when I tried that for WSL 1 distro. It’s also not<br>possible for WSL 2 distro since the entire disk is stored as a virtual disk<br>file. However, you can safely access WSL disks by navigating to <code>\\wsl$\</code> in<br>file explorer.</p>
+<p>(source: <a href="https://www.omgubuntu.co.uk/2020/04/access-wsl-files-windows-explorer" target="_blank" rel="noopener">https://www.omgubuntu.co.uk/2020/04/access-wsl-files-windows-explorer</a>)</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2019/07/29/version-manage-all-the-things/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2019/01/20/pacman-issue/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2019/01/20/wsl-ubuntu/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2019-01-20 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/linux/">linux<span>3</span></a></li> <li><a href="/blog/tags/Windows/">Windows<span>3</span></a></li> <li><a href="/blog/tags/WSL/">WSL<span>2</span></a></li> <li><a href="/blog/tags/Ubuntu/">Ubuntu<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

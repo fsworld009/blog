@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Install Archlinux &amp; Xfce4 on VirtualBox | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Below are random notes I jotted down when I installed Archlinux and Xfce4 on VirtualBox. It has been a while so there might be errors here and there.
+Guest System configuration
+EFI enabled
+GPT partition table for all disks
+GRUB bootloader
+Network setting: NAT">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Install Archlinux &amp; Xfce4 on VirtualBox"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Install Archlinux &amp; Xfce4 on VirtualBox</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Below are random notes I jotted down when I installed Archlinux and Xfce4 on VirtualBox. It has been a while so there might be errors here and there.</p>
+<h2 id="Guest-System-configuration"><a href="#Guest-System-configuration" class="headerlink" title="Guest System configuration"></a>Guest System configuration</h2><ul>
+<li>EFI enabled</li>
+<li>GPT partition table for all disks</li>
+<li>GRUB bootloader</li>
+<li>Network setting: NAT</li>
+</ul>
+<a id="more"></a>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><ul>
+<li>Basically follow this guide <a href="https://wiki.archlinux.org/index.php/installation_guide" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/installation_guide</a>  </li>
+<li>Article for VirtualBox: <a href="https://wiki.archlinux.org/index.php/VirtualBox" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/VirtualBox</a></li>
+</ul>
+<p>Notes for installation steps:</p>
+<h3 id="Partition-the-disks"><a href="#Partition-the-disks" class="headerlink" title="Partition the disks"></a>Partition the disks</h3><ol>
+<li>use <code>gdisk</code> to create GPT partition table for <code>/dev/sda/</code></li>
+<li>create boot partition with <code>EF00</code> file system code</li>
+<li><code>mkswap /dev/sdb</code> create swap partition (I created another virtual disk with GPT table for swap only)</li>
+</ol>
+<p><a href="https://wiki.archlinux.org/index.php/EFI_System_Partition#GPT_partitioned_disks" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/EFI_System_Partition#GPT_partitioned_disks</a><br><a href="https://wiki.archlinux.org/index.php/Swap#Swap_partition" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Swap#Swap_partition</a>  </p>
+<h3 id="Boot-loader"><a href="#Boot-loader" class="headerlink" title="Boot loader"></a>Boot loader</h3><p>Install GRUB: <a href="https://wiki.archlinux.org/index.php/GRUB#Installation_2" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/GRUB#Installation_2</a></p>
+<ol>
+<li><code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub</code></li>
+<li>create a script <code>/boot/startup.nsh</code> containing this line: <code>FS0:\EFI\grub\grubx64.efi</code><ul>
+<li><a href="https://wiki.archlinux.org/index.php/VirtualBox#Installation_in_EFI_mode" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/VirtualBox#Installation_in_EFI_mode</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="Activate-Numlock-on-boot"><a href="#Activate-Numlock-on-boot" class="headerlink" title="Activate Numlock on boot"></a>Activate Numlock on boot</h2><ul>
+<li><a href="https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#Extending_getty.40.service" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#Extending_getty.40.service</a></li>
+<li><code>sudo systemctl edit getty\@.service</code><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[Service]</span></div><div class="line"><span class="attr">ExecStartPre</span>=/bin/sh -c <span class="string">'setleds +num &lt; /dev/%I'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Enable-internet-on-boot"><a href="#Enable-internet-on-boot" class="headerlink" title="Enable internet on boot"></a>Enable internet on boot</h2><ol>
+<li><code>ping www.google.com</code></li>
+<li>If no internet, run <code>systemctl enable dhcpcd@enp0s3.service</code> and reboot</li>
+</ol>
+<ul>
+<li><a href="https://unix.stackexchange.com/questions/218084/no-internet-connection-for-new-installation" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/218084/no-internet-connection-for-new-installation</a></li>
+</ul>
+<h2 id="Create-main-user"><a href="#Create-main-user" class="headerlink" title="Create main user"></a>Create main user</h2><ul>
+<li><a href="https://wiki.archlinux.org/index.php/users_and_groups" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/users_and_groups</a></li>
+</ul>
+<ol>
+<li><code>useradd -m -G wheel -s /bin/bash fsworld009</code></li>
+<li><code>passwd fsworld009</code></li>
+<li>add user to other groups: <code>sudo gpasswd -a fsworld009 group_name</code></li>
+<li>current group setup:<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> id fsworld009</span></div><div class="line">uid=1000(fsworld009) gid=1000(fsworld009) groups=1000(fsworld009),10(wheel),92(audio),109(vboxsf)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Xfce4"><a href="#Xfce4" class="headerlink" title="Xfce4"></a>Xfce4</h2><ol>
+<li>Install: <code>sudo pacman -S xorg xfce4 xfce4-goodies</code></li>
+<li>start xfce4: <code>startxfce4</code></li>
+</ol>
+<ul>
+<li>I didn’t make xfce4 run on boot, just feel like it is better to login to shell only by default</li>
+</ul>
+<p>Notes for xfce4 environment:</p>
+<h3 id="Customize-startup-script"><a href="#Customize-startup-script" class="headerlink" title="Customize startup script"></a>Customize startup script</h3><p>~/.config/xfce4/xinitrc<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">GTK_IM_MODULE</span>=<span class="string">"fcitx"</span></div><div class="line"><span class="builtin-name">export</span> <span class="attribute">QT_IM_MODULE</span>=<span class="string">"fcitx"</span></div><div class="line"><span class="builtin-name">export</span> <span class="attribute">XMODIFIERS</span>=<span class="string">"@im=fcitx"</span></div><div class="line">imwheel</div><div class="line">source /etc/xdg/xfce4/xinitrc</div></pre></td></tr></table></figure></p>
+<p>All configs need to be above the source call</p>
+<h3 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h3><ol>
+<li>add user to <code>audio</code> group:<br><code>sudo gpasswd -a fsworld009 audio</code></li>
+<li>pulseaudio is required for Firefox audio output, so I use pulseaudio as audio core</li>
+<li><code>sudo pacman -S alsa-utils pulseaudio</code></li>
+<li>detailed explanation: <a href="https://askubuntu.com/a/427036/776335" target="_blank" rel="noopener">https://askubuntu.com/a/427036/776335</a></li>
+</ol>
+<h3 id="Change-default-app"><a href="#Change-default-app" class="headerlink" title="Change default app"></a>Change default app</h3><ul>
+<li><a href="https://www.linuxquestions.org/questions/slackware-14/change-terminal-for-thunar-%27open-terminal-here%27-custom-action-924097/" target="_blank" rel="noopener">https://www.linuxquestions.org/questions/slackware-14/change-terminal-for-thunar-%27open-terminal-here%27-custom-action-924097/</a></li>
+<li><code>exo-preferred-applications</code> or Applications -&gt; Settings -&gt; Preferred Applications</li>
+</ul>
+<h3 id="Change-mouse-scroll-speed"><a href="#Change-mouse-scroll-speed" class="headerlink" title="Change mouse scroll speed"></a>Change mouse scroll speed</h3><ul>
+<li><a href="http://www.webupd8.org/2015/12/how-to-change-mouse-scroll-wheel-speed.html" target="_blank" rel="noopener">http://www.webupd8.org/2015/12/how-to-change-mouse-scroll-wheel-speed.html</a></li>
+</ul>
+<ol>
+<li><code>sudo pacman -S imwheel</code></li>
+<li>add <code>imwheel</code> to <code>~/.config/xfce4/xinitrc</code></li>
+<li>create <code>~/.imwheelrc</code>:<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">".*"</span></div><div class="line"><span class="keyword">None</span>,      <span class="keyword">Up</span>,   Button4, <span class="number">6</span></div><div class="line"><span class="keyword">None</span>,      <span class="keyword">Down</span>, Button5, <span class="number">6</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Chinese-and-Japanese-Font"><a href="#Chinese-and-Japanese-Font" class="headerlink" title="Chinese and Japanese Font"></a>Chinese and Japanese Font</h3><ul>
+<li>I use Google Noto fonts</li>
+<li><code>sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji</code></li>
+</ul>
+<h3 id="IME"><a href="#IME" class="headerlink" title="IME"></a>IME</h3><ul>
+<li><code>gcin</code> does not work properly in many applications (like Google Chrome), so I installed <code>fcitx</code> instead</li>
+<li><code>pacman -Syu fcitx-im</code> for installing fcitx &amp; GUI framework supports <strong>(required)</strong></li>
+</ul>
+<ol>
+<li><code>fcitx-chewing</code> for Traditional Chinese, <code>fcitx-mozc</code> for Japanese</li>
+<li>you need <code>fcitx-configtool</code> package in order to config IMEs</li>
+<li>add the following to <code>~/.config/xfce4/xinitrc</code>:<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">GTK_IM_MODULE</span>=<span class="string">"fcitx"</span></div><div class="line"><span class="builtin-name">export</span> <span class="attribute">QT_IM_MODULE</span>=<span class="string">"fcitx"</span></div><div class="line"><span class="builtin-name">export</span> <span class="attribute">XMODIFIERS</span>=<span class="string">"@im=fcitx"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Thunar-No-Suitable-Archive-Manager-found-error"><a href="#Thunar-No-Suitable-Archive-Manager-found-error" class="headerlink" title="Thunar No Suitable Archive Manager found error"></a>Thunar No Suitable Archive Manager found error</h3><ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=31871" target="_blank" rel="noopener">https://bbs.archlinux.org/viewtopic.php?id=31871</a></li>
+</ul>
+<h3 id="zip-archives"><a href="#zip-archives" class="headerlink" title="zip archives"></a>zip archives</h3><ul>
+<li>use <code>peazip-gtk2</code></li>
+</ul>
+<h2 id="VirtualBox-related-topics"><a href="#VirtualBox-related-topics" class="headerlink" title="VirtualBox related topics"></a>VirtualBox related topics</h2><h3 id="Install-VirtualBox-Guest-addon"><a href="#Install-VirtualBox-Guest-addon" class="headerlink" title="Install VirtualBox Guest addon"></a>Install VirtualBox Guest addon</h3><ol>
+<li><code>sudo pacman -S virtualbox-guest-utils</code></li>
+<li>enable kernel module: <code>systemctl enable vboxservice.service</code></li>
+<li>Xfce4 should automatically load guest services, if not then do <code>VBoxClient --clipboard --draganddrop --seamless --display --checkhostversion</code> or <code>VBoxClient-all</code></li>
+</ol>
+<ul>
+<li><strong>DO NOT</strong> use hibernate from archlinux, use VirtualBox host’s save state feature instead. Otherwise guest addon will break on resume and it can only be fixed by full reboot.</li>
+</ul>
+<h3 id="Mount-shared-folder"><a href="#Mount-shared-folder" class="headerlink" title="Mount shared folder"></a>Mount shared folder</h3><ol>
+<li>Users have to be in <code>vboxsf</code> group (created after installing <code>virtualbox-guest-utils</code>):<br><code>sudo gpasswd -a fsworld009 vboxsf</code></li>
+<li><code>cd /;sudo mkdir shared</code></li>
+<li>Manual mount:<br><code>mount -t vboxsf shared_folder_name mount_point_on_guest_system</code></li>
+<li>Mount in fstab:<br><code>shared /shared/ vboxsf  uid=1000,gid=1000,rw,dmode=700,fmode=600,noauto,x-systemd.automount</code></li>
+</ol>
+<ul>
+<li><a href="https://blog.gtwang.org/tips/virtualbox-shared-folder/" target="_blank" rel="noopener">https://blog.gtwang.org/tips/virtualbox-shared-folder/</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/VirtualBox#Enable_shared_folders" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/VirtualBox#Enable_shared_folders</a></li>
+</ul>
+<h2 id="Mount-other-disks-in-fstab"><a href="#Mount-other-disks-in-fstab" class="headerlink" title="Mount other disks in fstab"></a>Mount other disks in fstab</h2><ul>
+<li><a href="https://wiki.archlinux.org/index.php/fstab" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/fstab</a></li>
+</ul>
+<ol>
+<li>Run <code>lsblk -f</code> to get UUIDs</li>
+<li>edit <code>/etc/fstab</code><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /dev/sdc1</span></div><div class="line"><span class="attribute">UUID</span>=enter_uid_here       mount_point      ext4    defaults,nofail,x-systemd.<span class="attribute">device-timeout</span>=1      0       2</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>all options: <a href="https://help.ubuntu.com/community/Fstab#Options" target="_blank" rel="noopener">https://help.ubuntu.com/community/Fstab#Options</a></li>
+</ul>
+<h2 id="SSH-server"><a href="#SSH-server" class="headerlink" title="SSH server"></a>SSH server</h2><ul>
+<li>Run a ssh server so that host machine can connect via SSH.</li>
+</ul>
+<ol>
+<li>setup port forwarding in VM setting (Network -&gt; Advanced): for example TCP, host 2222 to guest 22</li>
+<li><code>sudo pacman -S openssh</code></li>
+<li><p>enable the following options in <code>/etc/ssh/sshd_config</code>:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ListenAddress <span class="number">0.0</span>.<span class="number">0.0</span></div><div class="line">Protocol <span class="number">2</span></div><div class="line">PermitRootLogin no</div><div class="line">ChallengeResponseAuthentication no</div><div class="line">UsePAM yes</div><div class="line">Subsystem sftp /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">ssh</span>/<span class="title">sftp</span>-<span class="title">server</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>add <code>sshd:ALL</code> to <code>/etc/hosts.allow</code></p>
+</li>
+<li><code>sudo systemctrl start sshd.socket</code>, I created another user to authorize the service, not sure if this is required.</li>
+<li>check sshd log: <code>journalctl /usr/bin/sshd</code></li>
+<li>test ssh server locally: <code>ssh fsworld009@0.0.0.0:22</code><ul>
+<li>If you don’t have ssh keys yet you need to generate one, refer to GitHub guides: <a href="https://help.github.com/articles/checking-for-existing-ssh-keys/" target="_blank" rel="noopener">Check fot existing SSH keys</a>, <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">Generating a new SSH key and adding it to the ssh-agent</a></li>
+</ul>
+</li>
+<li>Ssh from host machine: <code>ssh 0.0.0.0 -p 2222</code></li>
+</ol>
+<ul>
+<li>Other refs: <a href="http://smalldd.pixnet.net/blog/post/24627330-arch-linux-%E5%AE%89%E8%A3%9D-openssh" target="_blank" rel="noopener">http://smalldd.pixnet.net/blog/post/24627330-arch-linux-%E5%AE%89%E8%A3%9D-openssh</a> (Traditional Chinese)</li>
+</ul>
+<h2 id="Xorg-over-SSH"><a href="#Xorg-over-SSH" class="headerlink" title="Xorg over SSH"></a>Xorg over SSH</h2><p><strong>NOT RECOMMEND</strong> as the performance is generally worse and there are many UI bugs when running over SSH</p>
+<ul>
+<li><p>In SSH sessions, run GUI applications with <code>&amp;</code> at the end to start the application in another process, for example: <code>firefox &amp;</code></p>
+</li>
+<li><p>enable the following settings in <code>/etc/ssh/sshd_config</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">X11Forwarding</span> <span class="literal">yes</span></div><div class="line"><span class="string">X11DisplayOffset</span> <span class="number">10</span></div><div class="line"><span class="string">X11UseLocalhost</span> <span class="literal">yes</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><ol>
+<li>You need a X Server such as <code>VcXsrv</code></li>
+<li>Use <code>putty</code> to connect to the guest machine, with the following setting enabled:<ul>
+<li>Connection -&gt; SSH -&gt; X11 -&gt; Enable X11 forwarding</li>
+<li>X display location: <code>localhost:0</code></li>
+</ul>
+</li>
+<li>If <code>$DISPLAY = localhost:10.0</code> after you login via ssh, then you are all set.<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash">  <span class="built_in">echo</span> <span class="variable">$DISPLAY</span></span></div><div class="line">localhost:10.0</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>Other notes:<ul>
+<li>If you want to use ssh from msys2 or Bash on Windows in windows 10, refer to below. (I believe you still need to run VcXsrv as X Server)</li>
+<li>The change IME short cut for <code>fcitx</code> may conflict with Windows host</li>
+</ul>
+</li>
+</ul>
+<h3 id="Unix-based-OS-not-tested"><a href="#Unix-based-OS-not-tested" class="headerlink" title="Unix based OS (not tested )"></a>Unix based OS (not tested )</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> DISPLAY=0.0.0.0:0</div><div class="line">ssh -X fsworld009@0.0.0.0 -p 2222</div><div class="line">firefox &amp;</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://cypresslin.web.fc2.com/Memo/M-SSH.html" target="_blank" rel="noopener">http://cypresslin.web.fc2.com/Memo/M-SSH.html</a></li>
+<li><a href="https://askubuntu.com/questions/432255/what-is-display-environment-variable" target="_blank" rel="noopener">https://askubuntu.com/questions/432255/what-is-display-environment-variable</a></li>
+</ul>
+<h2 id="Pacman-and-AUR-packages"><a href="#Pacman-and-AUR-packages" class="headerlink" title="Pacman and AUR packages"></a>Pacman and AUR packages</h2><p>Refer to my <a href="../../29/pacman/">other article</a>.</p>
+<h2 id="Enable-Hibernate"><a href="#Enable-Hibernate" class="headerlink" title="Enable Hibernate"></a>Enable Hibernate</h2><p><strong>DO NOT USE</strong> systemd hibernate when running as a VM guest, use VirtualBox host’s save state feature instead. Otherwise guest addon will break on resume and it can only be fixed by full reboot.</p>
+<ol>
+<li><p>Edit <code>/etc/default/grub</code>: add resume kernel parameter</p>
+<ul>
+<li>have seen many reports on /dev/sdx not working, but I didn’t try.<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">GRUB_CMDLINE_LINUX_DEFAULT</span>=<span class="string">"quiet resume=UUID=swap_uuid"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+</li>
+<li><p>Edit <code>/etc/mkinitcpio.conf</code>: add <code>resume</code> to HOOKS option</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">HOOKS</span>=(<span class="keyword">base </span>udev autodetect modconf <span class="keyword">block </span>filesystems keyboard fsck resume)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>sudo mkinitcpio -p linux</code></p>
+</li>
+<li><code>xfce4-power-manager-settings</code>: change sleep mode to hibernate</li>
+</ol>
+<p>Other refs:</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/kernel_parameters" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/kernel_parameters</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Configure_the_initramfs" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Configure_the_initramfs</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/System_maintenance" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/System_maintenance</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2017/12/29/pacman/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2017/11/14/back-2017/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2017/12/28/archlinux/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-12-28 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Archlinux/">Archlinux<span>4</span></a></li> <li><a href="/blog/tags/Linux/">Linux<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

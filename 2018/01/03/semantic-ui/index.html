@@ -1,0 +1,350 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Semantic UI | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Semantic UI is a component-based webpage layout Framework. I have used it on some of my personal projects and I really like it. Here are some of the benefits:
+
+Components driven. You only pick up components you need
+Ability to mix different themes in one project
+Provide site level overrides so you don’t need to touch theme files themselves
+Built-in Form validation
+Components have initialize and destroy methods so they can be integrated as ReactJs and Vue.js components">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Semantic UI"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Semantic UI</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><a href="https://semantic-ui.com/" target="_blank" rel="noopener">Semantic UI</a> is a component-based webpage layout Framework. I have used it on some of my personal projects and I really like it. Here are some of the benefits:</p>
+<ul>
+<li>Components driven. You only pick up components you need</li>
+<li>Ability to mix different themes in one project</li>
+<li>Provide site level overrides so you don’t need to touch theme files themselves</li>
+<li>Built-in Form validation</li>
+<li>Components have initialize and destroy methods so they can be integrated as ReactJs and Vue.js components</li>
+</ul>
+<a id="more"></a>
+<h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><ul>
+<li>jQuery</li>
+<li>npm and gulp for customized builds</li>
+</ul>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>Official Getting started: <a href="https://semantic-ui.com/introduction/getting-started.html" target="_blank" rel="noopener">https://semantic-ui.com/introduction/getting-started.html</a></p>
+<p>You can either download the prepackaged zip or use <code>npm</code> and <code>gulp</code> to do a customized build. I recommend take some time to understand how to do customized builds, because you cannot change themes or remove unused components in prepackaged version, which is a big selling point for Semantic UI.</p>
+<ol>
+<li>install <code>gulp</code> globally: <code>npm install -g gulp</code></li>
+<li>install semantic-ui in your project: <code>npm install semantic-ui</code></li>
+<li>You will see a set-up Semantic UI prompt. I usually go with ‘Automatic’-&gt;’Yes’-&gt;’semantic/‘ options. You can (and you will have to) edit config files manually later on.</li>
+<li>After the installation, there will be <code>semantic.json</code> and <code>semantic</code> folder.</li>
+</ol>
+<p>Once you have finished the prompt, it will not be shown again when doing <code>npm install</code> again. The solution is to delete semantic-ui folder in <code>node_modules</code> and run <code>npm install</code> again.</p>
+<h2 id="Basic-configurations"><a href="#Basic-configurations" class="headerlink" title="Basic configurations"></a>Basic configurations</h2><p>In <code>semantic.json</code>, you can change the output folders in <code>output</code> option. The folders specified in <code>output</code> option should be excluded in version control. There is also a <code>clean</code> option that should match the output base folder but I found it is not really working.</p>
+<p>There is also a <code>clean</code> option which you can set clean folder when running <code>gulp clean</code>. Unfortunately it will not work if you set it to a folder outside <code>semantic</code> folder:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Error: </span>Cannot delete files/folders outside the current working directory. Can be overriden with the `force` option.</div></pre></td></tr></table></figure>
+<p>I haven’t found a way to solve this issue without changing gulp task source codes.</p>
+<h2 id="Choose-themes-for-components"><a href="#Choose-themes-for-components" class="headerlink" title="Choose themes for components"></a>Choose themes for components</h2><p>Official theming guide: <a href="https://semantic-ui.com/usage/theming.html" target="_blank" rel="noopener">https://semantic-ui.com/usage/theming.html</a></p>
+<p>In <code>src/themes/</code> You can see all available themes.<br>To config themes, edit <code>src/theme.config</code>. (I recommend to have a backup for this file, like <code>theme.config.original</code>). By default all components are using ‘default’ theme.</p>
+<p>The way Semantic UI works is that we configure themes for each components. For example, if I want to use <code>material</code> theme for <code>dropdown</code> component, I will edit the following line:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@dropdown   :</span> <span class="string">'material'</span>;</div></pre></td></tr></table></figure></p>
+<p>That’s pretty much it. However, you need to make sure the theme actually has that component implemented. Say I want to use <code>material</code> theme for <code>form</code> components, but in <code>src/themes/material/collections</code> there is no form components implementations. Hence, if you do<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@form   :</span> <span class="string">'material'</span>;</div></pre></td></tr></table></figure></p>
+<p>The output will not have form component at all.</p>
+<h2 id="Edit-Site-specific-styles"><a href="#Edit-Site-specific-styles" class="headerlink" title="Edit Site-specific styles"></a>Edit Site-specific styles</h2><p>In <code>src/site</code>, you can also add specific less variables and styles for the project for each component.</p>
+<p>The .variables files are used to override component variables like overriding colors:</p>
+<p>src/site/globals/site.variables<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Material Theme Color rewrite */</span></div><div class="line"><span class="comment">/* https://materialuicolors.co/ Level 500 &amp; 200 */</span></div><div class="line"><span class="comment">/*---  Colors  ---*/</span></div><div class="line"><span class="variable">@blue             :</span> <span class="number">#2196F3</span>;</div><div class="line"><span class="variable">@green            :</span> <span class="number">#4CAF50</span>;</div><div class="line"><span class="variable">@grey             :</span> <span class="number">#9E9E9E</span>;</div><div class="line"><span class="variable">@orange           :</span> <span class="number">#FF9800</span>;</div><div class="line"><span class="variable">@pink             :</span> <span class="number">#E91E63</span>;</div><div class="line"><span class="variable">@purple           :</span> <span class="number">#9C27B0</span>;</div><div class="line"><span class="variable">@red              :</span> <span class="number">#F44336</span>;</div><div class="line"><span class="variable">@teal             :</span> <span class="number">#009688</span>;</div><div class="line"><span class="variable">@yellow           :</span> <span class="number">#FFEB3B</span>;</div><div class="line"></div><div class="line"><span class="comment">/*---  Light Colors  ---*/</span></div><div class="line"><span class="variable">@lightBlue        :</span> <span class="number">#90CAF9</span>;</div><div class="line"><span class="variable">@lightGreen       :</span> <span class="number">#A5D6A7</span>;</div><div class="line"><span class="variable">@lightOrange      :</span> <span class="number">#FFCC80</span>;</div><div class="line"><span class="variable">@lightPink        :</span> <span class="number">#F48FB1</span>;</div><div class="line"><span class="variable">@lightPurple      :</span> <span class="number">#CE93D8</span>;</div><div class="line"><span class="variable">@lightRed         :</span> <span class="number">#EF9A9A</span>;</div><div class="line"><span class="variable">@lightTeal        :</span> <span class="number">#80CBC4</span>;</div><div class="line"><span class="variable">@lightYellow      :</span> <span class="number">#FFF59D</span>;</div></pre></td></tr></table></figure></p>
+<p>The .overrides files are used to expend less rules. For example, to have colors in regular texts:</p>
+<p>src/site/globals/site.overrides<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@text-colors:</span> blue, green, orange, pink, purple, red, teal, yellow, black, grey, white;</div><div class="line"><span class="selector-class">.text</span> &#123;</div><div class="line">    <span class="selector-class">.-</span>(<span class="variable">@i</span>: length(<span class="variable">@text-colors</span>)) <span class="keyword">when</span> (<span class="variable">@i</span> &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="variable">@c:</span> extract(<span class="variable">@text-colors</span>, <span class="variable">@i</span>);</div><div class="line">        <span class="selector-tag">&amp;</span><span class="selector-class">.@&#123;c&#125;</span> &#123; <span class="attribute">color</span>: <span class="variable">@@c</span> &#125;</div><div class="line">        <span class="selector-class">.-</span>((<span class="variable">@i</span> - <span class="number">1</span>));</div><div class="line">    &#125;<span class="selector-class">.-</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>(source: <a href="https://github.com/Semantic-Org/Semantic-UI/issues/1885#issuecomment-226047499" target="_blank" rel="noopener">https://github.com/Semantic-Org/Semantic-UI/issues/1885#issuecomment-226047499</a>)</p>
+<p>Both variables and overrides have the same priority setting: <code>site &gt; chosen theme &gt; default theme</code>. More details are explained here: <a href="http://learnsemantic.com/themes/overview.html" target="_blank" rel="noopener">http://learnsemantic.com/themes/overview.html</a></p>
+<h2 id="Build-assets"><a href="#Build-assets" class="headerlink" title="Build assets"></a>Build assets</h2><p>After the configurations above are done, we need to generate final assets so that we can use the framework in our project.</p>
+<p>Under <code>semantic</code> folder, run <code>gulp clean build</code> to generate assets.</p>
+<p>Make sure that the script output files in the log if the output folder is outside <code>semantic</code> folder and clean task failed, or you can remove the folder manually just to be safe.</p>
+<p>Every time you make changes on <code>semantic.json</code>, <code>theme.config</code>, <code>site</code>, you need to rebuild the assets.</p>
+<p>Full gulp commands: <a href="https://semantic-ui.com/introduction/build-tools.html" target="_blank" rel="noopener">https://semantic-ui.com/introduction/build-tools.html</a></p>
+<h2 id="Remove-unused-components-on-built-assets"><a href="#Remove-unused-components-on-built-assets" class="headerlink" title="Remove unused components on built assets"></a>Remove unused components on built assets</h2><p>Most of the time we are not going to use all components in one project. It is recommend to remove unused components to reduce assets size.</p>
+<p>Add <code>components</code> property to <code>semantic.json</code>:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">"components": [</div><div class="line">  "reset",</div><div class="line">  "site",</div><div class="line">  "button",</div><div class="line">  "container",</div><div class="line">  "divider",</div><div class="line">  "flag",</div><div class="line">  "header",</div><div class="line">  "icon",</div><div class="line">  "image",</div><div class="line">  "input",</div><div class="line">  "label",</div><div class="line">  "list",</div><div class="line">  "loader",</div><div class="line">  "rail",</div><div class="line">  "reveal",</div><div class="line">  "segment",</div><div class="line">  "step",</div><div class="line">  "breadcrumb",</div><div class="line">  "form",</div><div class="line">  "grid",</div><div class="line">  "menu",</div><div class="line">  "message",</div><div class="line">  "table",</div><div class="line">  "ad",</div><div class="line">  "card",</div><div class="line">  "comment",</div><div class="line">  "feed",</div><div class="line">  "item",</div><div class="line">  "statistic",</div><div class="line">  "accordion",</div><div class="line">  "checkbox",</div><div class="line">  "dimmer",</div><div class="line">  "dropdown",</div><div class="line">  "embed",</div><div class="line">  "modal",</div><div class="line">  "nag",</div><div class="line">  "popup",</div><div class="line">  "progress",</div><div class="line">  "rating",</div><div class="line">  "search",</div><div class="line">  "shape",</div><div class="line">  "sidebar",</div><div class="line">  "sticky",</div><div class="line">  "tab",</div><div class="line">  "transition",</div><div class="line">  "api",</div><div class="line">  "form",</div><div class="line">  "state",</div><div class="line">  <span class="string">"visibility"</span></div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>then start to remove unused components. Rebuild assets after every edit.</p>
+<p>Keep in mind:</p>
+<ol>
+<li><code>site</code> and <code>reset</code> are essential.</li>
+<li><code>transition</code> and <code>visibility</code> are required for some components like <code>modal</code>. It is not documented so most of the time I would just leave them included.</li>
+</ol>
+<p>Without <code>components</code> property, the build script will include all components.</p>
+<h2 id="Documentation-and-usage-notes"><a href="#Documentation-and-usage-notes" class="headerlink" title="Documentation and usage notes"></a>Documentation and usage notes</h2><ul>
+<li><p>Check <a href="https://semantic-ui.com/" target="_blank" rel="noopener">Official website</a> for documentations.</p>
+</li>
+<li><p>Class names may require to be placed in order</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui grid"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"four wide column"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"twelve wide column"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Put class name as <code>wide four column</code> won’t work in this case.</p>
+</li>
+<li><p>For each component that involves javascript, the component implementations are declared as jquery instance methods, the method name is usually the component name, like <code>$(selector).dropdown()</code> is for dropdown and <code>$(selector),modal()</code> is for modal.</p>
+<ul>
+<li><p>To initialize the component:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.ui.dropdown'</span>).dropdown(settings)</div></pre></td></tr></table></figure>
+<p><code>settings</code> is an object that contains initialize options like most jQuery do. Available options are listed under <code>Settings</code> tab.</p>
+</li>
+<li><p>To invoke component behavior (methods):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'.ui.dropdown'</span>).dropdown(<span class="string">'set value'</span>, value);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Note that behavior name may have spaces and you should not remove them or convert them to camel case.</p>
+</li>
+</ul>
+</li>
+<li><p>Most javascript components offer the <code>destroy</code> behavior, we can use it to integrate with React and Vue.js life cycle. Take Vue.js for example, we need to implement <code>mounted</code>, <code>updated</code>, and <code>beforeDestroy</code> life cycle to create and destroy component:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">mounted() &#123;</div><div class="line">    <span class="keyword">this</span>.create();</div><div class="line">&#125;,</div><div class="line">updated()&#123;</div><div class="line">    <span class="keyword">this</span>.destroy();</div><div class="line">    <span class="keyword">this</span>.create();</div><div class="line">&#125;,</div><div class="line">beforeDestroy()&#123;</div><div class="line">    <span class="keyword">this</span>.destroy();</div><div class="line">&#125;, </div><div class="line">methods: &#123;</div><div class="line">    create()&#123;</div><div class="line">    <span class="keyword">var</span> $dropdown = $(<span class="keyword">this</span>.$el).find(<span class="string">".ui.dropdown"</span>);</div><div class="line">    $dropdown.dropdown(&#123;...&#125;);</div><div class="line">    &#125;,</div><div class="line">    destroy()&#123;</div><div class="line">    <span class="keyword">var</span> $dropdown = $(<span class="keyword">this</span>.$el).find(<span class="string">".ui.dropdown"</span>);</div><div class="line">    $dropdown.dropdown(<span class="string">'destroy'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>I would suggest to create a <code>Dropdown</code> component to abstract the create/destroy logics for better reusability. Same goes for all Semantic UI components.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ul>
+<li><a href="http://learnsemantic.com/developing/glossary.html" target="_blank" rel="noopener">Glossary</a></li>
+<li><a href="https://semantic-ui.com/examples/responsive.html" target="_blank" rel="noopener">Responsive Grid template</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2018/06/18/package-managers-windows-mac/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2017/12/29/pacman/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2018/01/03/semantic-ui/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2018-01-03 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Front-End/">Front-End<span>4</span></a></li> <li><a href="/blog/tags/javascript/">javascript<span>4</span></a></li> <li><a href="/blog/tags/semantic-ui/">semantic-ui<span>2</span></a></li> <li><a href="/blog/tags/css/">css<span>2</span></a></li> <li><a href="/blog/tags/npm/">npm<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

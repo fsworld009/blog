@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Pacman package manager cheatsheet | Developer 009</title>
+  <meta name="author" content="WorldFS">
+  
+  <meta name="description" content="Pacman notes
+Cheatsheet
+
+
+Usage
+Command
+
+
+
+
+Package upgrade
+pacman -Syu
+
+
+Sync package DB
+pacman -Sy
+
+
+Search package
+pacman -Ss package_name
+
+
+Install package
+pacman -S package_name
+
+
+Remove package and unused dependencies
+pacman -Rs package_name
+
+
+List installed packages
+pacman -Qeq
+
+
+Search installed package
+pacman -Qs package_name
+
+
+
+
+Always do pacman -Syu before you install packages">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Pacman package manager cheatsheet"/>
+  <meta property="og:site_name" content="Developer 009"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/blog/atom.xml" title="Developer 009" type="application/atom+xml">
+  
+  
+    <link href="/blog/favicon.png" rel="icon">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/css/themes/cerulean.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/blog/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/blog/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=375745726186991";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="/blog/">Developer 009</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/blog/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/blog/atom.xml" title="RSS">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header page-header-inverse ">		
+			<h1 class="title title-inverse "> Pacman package manager cheatsheet</h1>
+		</div>		
+	
+
+
+
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Pacman notes</p>
+<h2 id="Cheatsheet"><a href="#Cheatsheet" class="headerlink" title="Cheatsheet"></a>Cheatsheet</h2><table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package upgrade</td>
+<td>pacman -Syu</td>
+</tr>
+<tr>
+<td>Sync package DB</td>
+<td>pacman -Sy</td>
+</tr>
+<tr>
+<td>Search package</td>
+<td>pacman -Ss package_name</td>
+</tr>
+<tr>
+<td>Install package</td>
+<td>pacman -S package_name</td>
+</tr>
+<tr>
+<td>Remove package and unused dependencies</td>
+<td>pacman -Rs package_name</td>
+</tr>
+<tr>
+<td>List installed packages</td>
+<td>pacman -Qeq</td>
+</tr>
+<tr>
+<td>Search installed package</td>
+<td>pacman -Qs package_name</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Always do <code>pacman -Syu</code> before you install packages<a id="more"></a>
+<h2 id="Tips-and-notes"><a href="#Tips-and-notes" class="headerlink" title="Tips and notes"></a>Tips and notes</h2></li>
+<li><a href="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks</a></li>
+</ul>
+<h2 id="yy-v-s-y"><a href="#yy-v-s-y" class="headerlink" title="yy v.s. y"></a>yy v.s. y</h2><p>Passing two –refresh or -y flags will force a refresh of all package lists even if they appear to be up to date.</p>
+<h3 id="Unknown-public-key"><a href="#Unknown-public-key" class="headerlink" title="Unknown public key"></a>Unknown public key</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pacman -S libmng</div><div class="line">libmng-2.0.3.tar.xz ... FAILED (unknown public key F54984BFA16C640F)</div></pre></td></tr></table></figure>
+<ul>
+<li><code>gpg --recv-keys F54984BFA16C640F</code>.</li>
+<li><a href="https://wiki.archlinux.org/index.php/Makepkg#Signature_checking" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Makepkg#Signature_checking</a></li>
+</ul>
+<h3 id="Signature-from-is-unknown-trust"><a href="#Signature-from-is-unknown-trust" class="headerlink" title="Signature from  is unknown trust"></a>Signature from <publisher> is unknown trust</publisher></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pacman-key --refresh-keys</div></pre></td></tr></table></figure>
+<p>other possible fixes:</p>
+<ol>
+<li><p><a href="https://stackoverflow.com/a/35256655/3973896" target="_blank" rel="noopener">https://stackoverflow.com/a/35256655/3973896</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pacman -S archlinux-keyring</div><div class="line">pacman-key --populate</div><div class="line">pacman -Su</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://forum.antergos.com/post/46752" target="_blank" rel="noopener">https://forum.antergos.com/post/46752</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://git.archlinux.org/archlinux-keyring.git/snapshot/archlinux-keyring-20171213.tar.xz</div><div class="line">pacman -U antergos-keyring-20170524-1-any.pkg.tar.xz</div><div class="line">sudo pacman -Scc</div><div class="line">sudo pacman-key --refresh-keys</div><div class="line">sudo pacman -Syu</div></pre></td></tr></table></figure>
+<ul>
+<li>get the latest keyring at <a href="https://git.archlinux.org/archlinux-keyring.git/" target="_blank" rel="noopener">https://git.archlinux.org/archlinux-keyring.git/</a></li>
+</ul>
+</li>
+<li><p>Disable packages that are blocking update</p>
+<ul>
+<li>For example, I was getting this error for pkgbuilder author’s key</li>
+<li><p>Re-assign key also failed</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$  sudo pacman-key -r 5EAAEA16</div><div class="line">gpg: keyserver receive failed: No data</div><div class="line">==&gt; ERROR: Remote key not fetched correctly from keyserver.</div></pre></td></tr></table></figure>
+</li>
+<li><p>The kiyring is outdated but pacman upgrades are blocked by this key</p>
+</li>
+<li>The only workaround at this point is to disable upgrading pkgbuilder</li>
+<li><p><code>sudo /etc/pacman.conf</code> , edit <code>IgnorePkg</code> to include pkgbuilder:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">IgnorePkg</span>   = fakeroot,pkgbuilder</div></pre></td></tr></table></figure>
+</li>
+<li><p>and comment out pkgbuilder repository:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> [pkgbuilder]</span></div><div class="line"><span class="meta">#</span><span class="bash"> Server = https://pkgbuilder-repo.chriswarrick.com/</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>after the upgrade, revert pkgbuilder</p>
+</li>
+<li>then <code>sudo pacman-key --refresh-keys</code> should fix the issue<ul>
+<li>or follow their <a href="https://github.com/Kwpolska/pkgbuilder" target="_blank" rel="noopener">README</a> to resign the key</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="The-requested-URL-returned-error-404"><a href="#The-requested-URL-returned-error-404" class="headerlink" title="The requested URL returned error: 404"></a>The requested URL returned error: 404</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">error: </span>failed retrieving file 'python2-requests<span class="string">-2</span>.18.4<span class="string">-4</span>-any.pkg.tar.xz' from mirrors.evowise.com : The requested URL returned error: 404</div><div class="line"><span class="keyword">error: </span>failed retrieving file 'python2-requests<span class="string">-2</span>.18.4<span class="string">-4</span>-any.pkg.tar.xz' from mirrors.kernel.org : The requested URL returned error: 404</div><div class="line"><span class="keyword">error: </span>failed retrieving file 'python2-requests<span class="string">-2</span>.18.4<span class="string">-4</span>-any.pkg.tar.xz' from mirrors.kernel.org : The requested URL returned error: 404</div><div class="line">warning: failed to retrieve some files</div><div class="line"><span class="keyword">error: </span>failed to commit transaction (unexpected error)</div><div class="line">Errors occurred, no packages were upgraded.</div></pre></td></tr></table></figure>
+<p>This is usually happened because the local database is outdated, so pacman is not aware of new version and trying to pull a old version package (which is not available anymore). The <code>python2-requests</code> package, at the time of writing, is actually on <code>2.19.1-1</code>.</p>
+<p>Do <code>pacman -Syu</code> or <code>pacman -Syyu</code> should fix the error.</p>
+<p>If the problem exists, it could also be that the server mirror you’re using is outdated, try edit <code>/etc/pacman.d/mirrorlist</code> and disable (comment out) top servers:</p>
+<ul>
+<li>/etc/pacman.d/mirrorlist<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Worldwide</span></div><div class="line">Server = http:<span class="regexp">//mi</span>rrors.evowise.com<span class="regexp">/archlinux/</span><span class="variable">$repo</span><span class="regexp">/os/</span><span class="variable">$arch</span></div><div class="line"><span class="comment">#Server = http://mirror.rackspace.com/archlinux/$repo/os/$arch</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>add <code>#</code> to comment out the first server and try again, for me it was the worldwide server that is outdated.</p>
+<h3 id="lib32-packages"><a href="#lib32-packages" class="headerlink" title="lib32 packages"></a>lib32 packages</h3><ul>
+<li>Required by some 32bit applications, or when you want to build 32bit applications from gcc.</li>
+<li><strong>NOT RECOMMAND</strong> unless required by other packages, see below error note</li>
+<li><p>uncomment the following in <code>/etc/pacman.conf</code>:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[multilib]</span></div><div class="line"><span class="attr">Include</span> = /etc/pacman.d/mirrorlist</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>gcc-multilib</code> packages will replace gcc packages when installed. (I don’t think they can coexist)</p>
+</li>
+</ul>
+<h4 id="breaks-dependency-error-when-doing-pacman-installs"><a href="#breaks-dependency-error-when-doing-pacman-installs" class="headerlink" title="breaks dependency error when doing pacman installs"></a>breaks dependency error when doing pacman installs</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$  sudo pacman -Syu</div><div class="line">:: Synchronizing package databases...</div><div class="line">...</div><div class="line">error: failed to prepare transaction (could not satisfy dependencies)</div><div class="line">:: gcc-libs-multilib: installing lib32-gcc-libs (7.2.1-2) breaks dependency <span class="string">'lib32-gcc-libs=7.2.0-3'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>At the time of writing, this is because gcc has upgraded to 7.2.1 while gcc-multilib is still on 7.2.0-3. Since I’m not using gcc-multilib anymore I just revert back to gcc by doing <code>pacman -S gcc</code></li>
+<li><a href="https://forum.manjaro.org/t/cannot-apply-the-latest-update-due-to-dependency-conflict/25283/9" target="_blank" rel="noopener">https://forum.manjaro.org/t/cannot-apply-the-latest-update-due-to-dependency-conflict/25283/9</a></li>
+</ul>
+<h3 id="Cleanup"><a href="#Cleanup" class="headerlink" title="Cleanup"></a>Cleanup</h3><ul>
+<li>Remove unused dependencies: <code>sudo pacman -Rns $(pacman -Qtdq)</code></li>
+</ul>
+<h3 id="3rd-party-AUR-package-manager"><a href="#3rd-party-AUR-package-manager" class="headerlink" title="3rd party AUR package manager"></a>3rd party AUR package manager</h3><ul>
+<li><a href="https://github.com/Kwpolska/pkgbuilder" target="_blank" rel="noopener">pkgbuilder</a></li>
+</ul>
+<ol>
+<li><p>add the following to <code>/etc/pacman.conf</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">[pkgbuilder]</span></div><div class="line"><span class="attr">Server</span> = https://pkgbuilder-repo.chriswarrick.com/</div></pre></td></tr></table></figure>
+</li>
+<li><p>Run</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pacman-key -r 5EAAEA16</div><div class="line">pacman-key --lsign 5EAAEA16</div><div class="line">pacman -Syyu pkgbuilder</div></pre></td></tr></table></figure>
+</li>
+<li><p>basically the usage is the same as <code>pacman</code>, for example <code>pkgbuilder -S package_name</code> and <code>pkgbuilder -Syu</code></p>
+</li>
+</ol>
+<h3 id="Build-AUR-packages-manually"><a href="#Build-AUR-packages-manually" class="headerlink" title="Build AUR packages manually"></a>Build AUR packages manually</h3><p>You need to install <code>base-devel</code> package for building packages</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pkgbuilder -F &#123;package_name&#125;</div><div class="line">nvim PKGBUILD</div><div class="line">makepkg -sCLf</div><div class="line">sudo pacman -U *.pkg.tar.xz</div></pre></td></tr></table></figure>
+<ul>
+<li>For step 1, you can also download PKGBUILD file manually from AUR pages if you don’t want to use AUR package manager.</li>
+<li>Use <code>makepkg -RdLf</code> for a “re-package”. Re-packaging is useful when the process failed in package() and you don’t want to run the long build part again.</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/blog/2018/01/03/semantic-ui/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/blog/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/blog/2017/12/28/archlinux/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+
+    <!-- share -->
+    
+        
+
+        
+
+    
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  <section id="comments"><div class="fb-comments" data-href="https://fsworld009.github.io/blog/2017/12/29/pacman/index.html" data-numposts="10" data-order-by="reverse_time"></div></section>
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-12-29 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/blog/tags/Archlinux/">Archlinux<span>4</span></a></li> <li><a href="/blog/tags/linux/">linux<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+var disqus_shortname = 'fsworld009';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2020 WorldFS
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/bootstrap.min.js"></script>
+<script src="/blog/js/main.js"></script>
+<script src="/blog/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
