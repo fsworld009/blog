@@ -136,6 +136,20 @@ sudo chown -R user1 linuxbrew/
 
 5. now you should be able to install packages, like `brew install git`
 
+## Set timezone
+
+```bash
+sudo apt-get install tzdata
+```
+
+Then follow the instruction to set timezone
+
+To update timezone:
+
+```bash
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+```
+
 ## Backup instance configs
 1. export registry at
 `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\<Distro ID>`,
@@ -206,7 +220,9 @@ sudo locale-gen
 (2020/06/26) Note that if your project is put on Windows file system and
 shared to WSL distro, currently changing files from Windows won't trigger
 file change notifications on Linux side
-(see https://github.com/microsoft/WSL/issues/4739)
+(see https://github.com/microsoft/WSL/issues/4739). A workaround
+would be move all files into WSL file system, and access them
+from Windows (see [below](#Access-WSL-filesystem-from-Windows) for instructions)
 
 1. Download amnd install WSL 2 Kernel from
    https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
@@ -216,12 +232,23 @@ file change notifications on Linux side
       ```powershell
       dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
       ```
-3.
-  ```bash
-  wsl --set-version Ubuntu 2
-  ```
+3. 
+    ```bash
+    wsl --set-version Ubuntu 2
+    ```
 
 Prefer setting default wsl version to 2 after this
 ```bash
 wsl --set-default-version 2
 ```
+
+## Access WSL filesystem from Windows
+
+It is not recommend to edit files in WSL directly from Windows by opening files
+from C drive (or the drive you installed the WSL). I recall that resulted
+messing up file permissions when I tried that for WSL 1 distro. It's also not
+possible for WSL 2 distro since the entire disk is stored as a virtual disk
+file. However, you can safely access WSL disks by navigating to `\\wsl$\` in
+file explorer.
+
+(source: https://www.omgubuntu.co.uk/2020/04/access-wsl-files-windows-explorer)
